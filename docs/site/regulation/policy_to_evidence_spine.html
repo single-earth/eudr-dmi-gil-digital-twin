@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Policy-to-evidence spine</title>
+    <style>
+      :root { --fg:#111; --bg:#fff; --muted:#666; --card:#f6f7f9; --link:#0b5fff; }
+      body { font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+             color: var(--fg); background: var(--bg); margin: 0; }
+      header { border-bottom: 1px solid #e7e7e7; background: #fff; position: sticky; top: 0; }
+      .wrap { max-width: 980px; margin: 0 auto; padding: 16px 20px; }
+      nav a { margin-right: 14px; text-decoration: none; color: var(--link); font-weight: 600; }
+      nav a.active { color: var(--fg); }
+      .crumbs { margin-top: 10px; font-size: 13px; color: var(--muted); }
+      .crumbs a { color: var(--link); text-decoration: none; font-weight: 600; }
+      .crumbs .sep { margin: 0 6px; color: #999; }
+      main { padding: 18px 20px 40px; }
+      h1 { margin: 0 0 6px; font-size: 22px; }
+      h2 { margin-top: 24px; font-size: 18px; }
+      p { line-height: 1.5; }
+      .muted { color: var(--muted); }
+      .back { margin: 0 0 10px; }
+      .back a { color: var(--link); text-decoration: none; font-weight: 600; }
+      .card { background: var(--card); border: 1px solid #e8eaee; border-radius: 12px; padding: 14px 14px; }
+      ul { padding-left: 18px; }
+      code { background: #f1f1f1; padding: 1px 4px; border-radius: 6px; }
+      .md { line-height: 1.55; }
+      .md table { border-collapse: collapse; }
+      .md th, .md td { border: 1px solid #dde0e6; padding: 6px 10px; }
+      .md thead th { background: #eef1f6; }
+      .md .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+      .md .table-wrap table { width: max-content; min-width: 100%; }
+      .grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
+      @media (min-width: 760px) { .grid { grid-template-columns: 1fr 1fr; } }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="wrap">
+        <nav>
+          <a href="../index.html">Home</a>
+          <a href="../articles/index.html">Articles</a>
+          <a href="../dependencies/index.html">Dependencies</a>
+          <a href="links.html">Regulation</a>
+          <a href="sources.html">Sources</a>
+          <a href="policy_to_evidence_spine.html" class="active">Spine</a>
+          <a href="../views/index.html">Views</a>
+          <a href="../aoi_reports/index.html">AOI Reports</a>
+          <a href="../dao_stakeholders/index.html">DAO (Stakeholders)</a>
+          <a href="../dao_dev/index.html">DAO (Developers)</a>
+        </nav>
+        
+      </div>
+    </header>
+    <main>
+      <div class="wrap">
+        
+<div class="md">
+<h1>Policy-to-Evidence Spine</h1>
+<h2>Purpose</h2>
+<p>This document provides the master mapping from obligations (e.g., regulatory articles) to control objectives and the concrete evidence artifacts that support inspection.</p>
+<h2>Boundary</h2>
+<p>This repo does not describe upstream platform internals (including <code>geospatial_dmi</code>). The “Produced By” column references agents/workflows and canonical entrypoints only.</p>
+<h2>Master Spine Table</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Obligation/Article</th>
+<th>Control Objective</th>
+<th>Evidence Artifact</th>
+<th>Acceptance Criteria</th>
+<th>Produced By (agent/workflow)</th>
+<th>Evidence Path</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Article 9 (Information requirements)</td>
+<td>AOI, inputs, and upstream dependencies are captured with provenance sufficient for traceability.</td>
+<td><code>inputs/geometry.*</code><br /><code>inputs/parameters.json</code><br /><code>provenance/provenance.json</code><br /><code>manifest.json</code> + <code>hashes.sha256</code></td>
+<td>Inputs exist and are referenced by the manifest; JSON files parse; provenance entries are present for each used dependency and non-empty where required; recomputed SHA-256 matches <code>hashes.sha256</code> and the manifest (no missing artifacts).</td>
+<td><code>python -m eudr_dmi.articles.art_09.runner</code> (scaffold)</td>
+<td><code>inputs/geometry.*</code>, <code>inputs/parameters.json</code>, <code>provenance/provenance.json</code>, <code>manifest.json</code>, <code>hashes.sha256</code></td>
+<td>Current runner scaffolds write <code>manifest.sha256</code> + <code>bundle_metadata.json</code>; this row defines the target bundle contract used for inspection.</td>
+</tr>
+<tr>
+<td>Article 10 (Risk assessment)</td>
+<td>Deforestation and forest-presence signals are computed for the AOI and included in the assessment outcome.</td>
+<td><code>outputs/summary.json</code><br /><code>outputs/deforestation.json</code> (or similar)<br /><code>outputs/maa_amet_crosscheck.json</code></td>
+<td>Outputs exist and are referenced by the manifest; JSON files parse; <code>outputs/summary.json</code> includes status and evidence references; deforestation + Maa-amet results include an explicit status and inputs fingerprint (or equivalent) so reruns are explainable; hashes verify (SHA-256 matches).</td>
+<td><code>python -m eudr_dmi.articles.art_10.runner</code> (scaffold)</td>
+<td><code>outputs/summary.json</code>, <code>outputs/deforestation.json</code> (or similar), <code>outputs/maa_amet_crosscheck.json</code></td>
+<td>Current runner scaffolds write <code>manifest.sha256</code>; outputs listed here are the intended stable contract for inspection once Step 3/4 land.</td>
+</tr>
+<tr>
+<td>Article 11 (Risk mitigation)</td>
+<td>If risk is not LOW, mitigation actions are stated and linked to evidence gaps or conflicts.</td>
+<td><code>outputs/mitigation_plan.json</code></td>
+<td>File exists and is referenced by the manifest; JSON parses; plan states the trigger condition (e.g., non-LOW/UNDETERMINED risk) and lists actions linked to specific evidence gaps/conflicts (artifact paths or decision ids); hashes verify (SHA-256 matches).</td>
+<td><code>python -m eudr_dmi.articles.art_11.runner</code> (scaffold)</td>
+<td><code>outputs/mitigation_plan.json</code></td>
+<td>This row defines the minimum mitigation-plan inspection contract; a deterministic scaffold can be emitted before full mitigation logic exists.</td>
+</tr>
+<tr>
+<td>TODO_ARTICLE_REF_DEFINITIONS</td>
+<td>Definition consistency / interpretability constraint (scaffold)</td>
+<td><code>definition_comparison.json</code> + <code>dependencies.json</code></td>
+<td>Artifacts present; parseable JSON; deterministic ordering; <code>outcome</code> defaults to <code>UNKNOWN</code> until extraction implemented; provenance hashes recorded for dependency run.</td>
+<td><code>scripts/task3/definition_comparison_control.py</code></td>
+<td><code>method/definition_comparison.json</code>, <code>provenance/dependencies.json</code></td>
+<td>Scaffold for later NLP extraction and mismatch logic.</td>
+</tr>
+</tbody>
+</table></div>
+<h3>Update Notes (How to Maintain the Spine)</h3>
+<ul>
+<li>Each new obligation/control MUST add a row and MUST reference a concrete artifact and acceptance criteria.</li>
+<li>Each evidence artifact MUST be defined in <a href="#" title="../architecture/evidence_bundle_spec.md">docs/architecture/evidence_bundle_spec.md</a>.</li>
+<li>TODO: Add canonical references/links to any upstream entrypoints used (without describing upstream architecture).</li>
+</ul>
+<h2>Inspector Checklist</h2>
+<ul>
+<li>Each control objective has at least one artifact with objective acceptance criteria.</li>
+<li>Evidence paths are relative to the bundle root and resolve to real files.</li>
+<li>“Produced By” identifies the responsible workflow/agent version (recorded in manifest).</li>
+</ul>
+</div>
+      </div>
+    </main>
+  </body>
+</html>

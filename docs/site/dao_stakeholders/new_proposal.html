@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>New Proposal (Stakeholders)</title>
+    <style>
+      :root { --fg:#111; --bg:#fff; --muted:#666; --card:#f6f7f9; --link:#0b5fff; }
+      body { font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+             color: var(--fg); background: var(--bg); margin: 0; }
+      header { border-bottom: 1px solid #e7e7e7; background: #fff; position: sticky; top: 0; }
+      .wrap { max-width: 980px; margin: 0 auto; padding: 16px 20px; }
+      nav a { margin-right: 14px; text-decoration: none; color: var(--link); font-weight: 600; }
+      nav a.active { color: var(--fg); }
+      .crumbs { margin-top: 10px; font-size: 13px; color: var(--muted); }
+      .crumbs a { color: var(--link); text-decoration: none; font-weight: 600; }
+      .crumbs .sep { margin: 0 6px; color: #999; }
+      main { padding: 18px 20px 40px; }
+      h1 { margin: 0 0 6px; font-size: 22px; }
+      h2 { margin-top: 24px; font-size: 18px; }
+      p { line-height: 1.5; }
+      .muted { color: var(--muted); }
+      .back { margin: 0 0 10px; }
+      .back a { color: var(--link); text-decoration: none; font-weight: 600; }
+      .card { background: var(--card); border: 1px solid #e8eaee; border-radius: 12px; padding: 14px 14px; }
+      ul { padding-left: 18px; }
+      code { background: #f1f1f1; padding: 1px 4px; border-radius: 6px; }
+      .md { line-height: 1.55; }
+      .md table { border-collapse: collapse; }
+      .md th, .md td { border: 1px solid #dde0e6; padding: 6px 10px; }
+      .md thead th { background: #eef1f6; }
+      .md .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+      .md .table-wrap table { width: max-content; min-width: 100%; }
+      .grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
+      @media (min-width: 760px) { .grid { grid-template-columns: 1fr 1fr; } }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="wrap">
+        <nav>
+          <a href="../index.html">Home</a>
+          <a href="../articles/index.html">Articles</a>
+          <a href="../dependencies/index.html">Dependencies</a>
+          <a href="../regulation/links.html">Regulation</a>
+          <a href="../regulation/sources.html">Sources</a>
+          <a href="../regulation/policy_to_evidence_spine.html">Spine</a>
+          <a href="../views/index.html">Views</a>
+          <a href="../aoi_reports/index.html">AOI Reports</a>
+          <a href="index.html" class="active">DAO (Stakeholders)</a>
+          <a href="../dao_dev/index.html">DAO (Developers)</a>
+        </nav>
+        
+      </div>
+    </header>
+    <main>
+      <div class="wrap">
+        
+<h1>New Proposal (Stakeholders)</h1>
+<p class="muted">Create a proposal directory under <code>proposals/</code> and submit it for review.</p>
+<h2>Checklist</h2>
+<p class="muted">This is intentionally manual: copy templates, answer the Q/A, and submit for review.</p>
+<div class="card">
+  <p class="muted">Focus: list the affected obligations/controls and state the expected impact on PASS/FAIL/UNDETERMINED.</p>
+  <ol>
+    <li>Create folder <code>proposals/SCP-YYYY-NNN-slug/</code></li>
+    <li>Copy the appropriate template files (<code>proposal.yaml</code> and <code>evidence_refs.yaml</code>)</li>
+    <li>Fill required fields: <code>scp_id</code>, <code>proposer</code>, <code>affected_controls</code>, <code>claim</code></li>
+    <li>submit as an SCP package (outside of this repo)</li>
+  </ol>
+</div>
+<h2>Q/A Session (your inputs)</h2>
+<div class="card">
+  <ul>
+    <li><strong>Q:</strong> What is the <code>scp_id</code>? <strong>A:</strong> Pick <code>SCP-YYYY-NNN-slug</code>.</li>
+    <li><strong>Q:</strong> Who is the proposer? <strong>A:</strong> Fill <code>proposer</code>.</li>
+    <li><strong>Q:</strong> Which obligations/controls are affected? <strong>A:</strong> Fill <code>affected_controls</code>.</li>
+    <li><strong>Q:</strong> What is your claim? <strong>A:</strong> Fill <code>claim</code> with a single testable sentence.</li>
+    <li><strong>Q:</strong> How does this change PASS/FAIL/UNDETERMINED? <strong>A:</strong> Fill <code>expected_impact</code>.</li>
+    <li><strong>Q:</strong> What evidence supports this? <strong>A:</strong> Add items to <code>evidence_refs.yaml</code> using bundle paths when possible.</li>
+  </ul>
+</div>
+<h2>Copy/Paste Package (output)</h2>
+<p class="muted">Use this as your starting point. The source-of-truth repo templates live under <code>docs/dao/templates/</code>.</p>
+<div class="card">
+  <h3>Folder tree</h3>
+  <pre><code>proposals/
+  SCP-YYYY-NNN-&lt;slug&gt;/
+    proposal.yaml
+    evidence_refs.yaml</code></pre>
+</div>
+<div class="card">
+  <h3>proposal.yaml</h3>
+  <pre><code>schema_version: &quot;1.0&quot;
+
+# Required
+scp_id: &quot;SCP-YYYY-NNN-&lt;slug&gt;&quot;
+proposer:
+  name: &quot;&lt;name&gt;&quot;
+  organization: &quot;&lt;org&gt;&quot;
+  contact: &quot;&lt;email or handle&gt;&quot;
+affected_controls:
+  - &quot;&lt;obligation/control reference&gt;&quot;
+claim: |
+  &lt;One clear sentence: what should change?&gt;
+
+# Stakeholder-specific: call out expected PASS/FAIL/UNDETERMINED impact.
+expected_impact:
+  pass_fail_undetermined: &quot;UNDETERMINED&quot;  # PASS | FAIL | UNDETERMINED
+  rationale: |
+    &lt;Why this changes the outcome and under which conditions&gt;
+
+acceptance_criteria:
+  - &quot;&lt;Objective, testable criterion&gt;&quot;
+
+bundle_paths_reviewed:
+  - &quot;site/index.html&quot;
+  - &quot;regulation/links.html&quot;
+
+notes: |
+  &lt;Optional: additional context&gt;</code></pre>
+</div>
+<div class="card">
+  <h3>evidence_refs.yaml</h3>
+  <pre><code>schema_version: &quot;1.0&quot;
+
+# Required
+scp_id: &quot;SCP-YYYY-NNN-&lt;slug&gt;&quot;
+
+evidence:
+  - id: &quot;E1&quot;
+    kind: &quot;bundle_path&quot;  # bundle_path | repo_path | external
+    ref: &quot;&lt;e.g. site/dao_stakeholders/index.html&gt;&quot;
+    sha256: &quot;&quot;  # Optional: use when you are referencing a specific file version
+    note: &quot;&lt;Why this evidence matters&gt;&quot;</code></pre>
+</div>
+
+<div class="card">
+  <h2>Related Views</h2>
+  <ul>
+    <li><a href="../dao_dev/index.html">DAO (Developers)</a></li>
+    <li><a href="../views/task_view.html#task-to-artifact-map">Task view</a> — what “done” means</li>
+    <li><a href="../views/agentic_view.html#agent-roles">Agentic view</a> — roles, <a href="../views/agentic_view.html#deterministic-run-contract-for-all-agents">deterministic run contract</a>, <a href="../views/agentic_view.html#required-inspection-invariants">inspection invariants</a></li>
+    <li><a href="../views/digital_twin_view.html#trigger-and-rerun-rules-high-level">Digital twin view</a> — change triggers and rerun rules</li>
+  </ul>
+</div>
+<div class="card">
+  <h2>Links</h2>
+  <ul>
+    <li><a href="proposals/index.html">Browse proposals</a></li>
+    <li><a href="index.html">Back to DAO (Stakeholders)</a></li>
+  </ul>
+</div>
+      </div>
+    </main>
+  </body>
+</html>

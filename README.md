@@ -1,30 +1,44 @@
 # eudr-dmi-gil-digital-twin
 
-This repository publishes static, human-inspectable HTML views derived from the authoritative EUDR-DMI-GIL implementation.
+This repository publishes the public, inspectable HTML/DAO portal for the EUDR-DMI-GIL Digital Twin.
 
-## What is EUDR-DMI-GIL-Digital-Twin?
-
-Abbreviations:
+## Abbreviations
 
 - EUDR = European Union Deforestation Regulation
 - DMI = Data Management Infrastructure
 - GIL = Geospatial Intelligence Layer
-- Digital Twin = a public, inspectable, versioned representation of system state, evidence, and governance processes
 
-This repository publishes static, human-inspectable HTML views derived from the authoritative implementation.
+## What is the Digital Twin portal?
 
-## Repository Role (Inspectable Portal)
+This repository exists to support inspection, transparency, and governance by publishing static, human-inspectable HTML views and DAO templates.
 
-This repository exists to support inspection, transparency, and governance:
+It is not authoritative for code or compliance logic.
 
-- this repo is NOT authoritative
-- it does not execute pipelines
-- it does not make compliance determinations
-- it exists to support inspection, transparency, and governance
+## Definitions
 
-## Authoritative Source
+### DAO (Procedural DAO)
 
-The authoritative source is:
+In this project, “DAO” refers to a procedural, evidence-driven governance workflow for proposing, reviewing, and implementing changes. It does not refer to a blockchain-based DAO.
+
+In this portal, the DAO is expressed as a governance interface: templates, structured questions, and proposal pages that reference published artefacts.
+
+The intent is to make governance artefacts auditable and transparent, with deterministic outputs that can be reproduced and reviewed.
+
+### Digital Twin
+
+The Digital Twin is a public, inspectable, versioned representation of system state, evidence mappings, and generated outputs.
+
+This portal publishes a versioned, inspectable state of:
+
+- evidence mappings (e.g., policy-to-evidence spine)
+- generated reports and views
+- DAO templates and proposal indices
+
+It is not a live “real-time twin” by default. Updates are published through controlled releases, via human-in-the-loop feedback loops.
+
+## Authoritative source
+
+The authoritative implementation repository is:
 
 <https://github.com/GeorgeMadlis/eudr-dmi-gil>
 

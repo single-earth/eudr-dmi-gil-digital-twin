@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Dependencies</title>
+    <style>
+      :root { --fg:#111; --bg:#fff; --muted:#666; --card:#f6f7f9; --link:#0b5fff; }
+      body { font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+             color: var(--fg); background: var(--bg); margin: 0; }
+      header { border-bottom: 1px solid #e7e7e7; background: #fff; position: sticky; top: 0; }
+      .wrap { max-width: 980px; margin: 0 auto; padding: 16px 20px; }
+      nav a { margin-right: 14px; text-decoration: none; color: var(--link); font-weight: 600; }
+      nav a.active { color: var(--fg); }
+      .crumbs { margin-top: 10px; font-size: 13px; color: var(--muted); }
+      .crumbs a { color: var(--link); text-decoration: none; font-weight: 600; }
+      .crumbs .sep { margin: 0 6px; color: #999; }
+      main { padding: 18px 20px 40px; }
+      h1 { margin: 0 0 6px; font-size: 22px; }
+      h2 { margin-top: 24px; font-size: 18px; }
+      p { line-height: 1.5; }
+      .muted { color: var(--muted); }
+      .back { margin: 0 0 10px; }
+      .back a { color: var(--link); text-decoration: none; font-weight: 600; }
+      .card { background: var(--card); border: 1px solid #e8eaee; border-radius: 12px; padding: 14px 14px; }
+      ul { padding-left: 18px; }
+      code { background: #f1f1f1; padding: 1px 4px; border-radius: 6px; }
+      .md { line-height: 1.55; }
+      .md table { border-collapse: collapse; }
+      .md th, .md td { border: 1px solid #dde0e6; padding: 6px 10px; }
+      .md thead th { background: #eef1f6; }
+      .md .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+      .md .table-wrap table { width: max-content; min-width: 100%; }
+      .grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
+      @media (min-width: 760px) { .grid { grid-template-columns: 1fr 1fr; } }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="wrap">
+        <nav>
+          <a href="../index.html">Home</a>
+          <a href="../articles/index.html">Articles</a>
+          <a href="index.html" class="active">Dependencies</a>
+          <a href="../regulation/links.html">Regulation</a>
+          <a href="../regulation/sources.html">Sources</a>
+          <a href="../regulation/policy_to_evidence_spine.html">Spine</a>
+          <a href="../views/index.html">Views</a>
+          <a href="../aoi_reports/index.html">AOI Reports</a>
+          <a href="../dao_stakeholders/index.html">DAO (Stakeholders)</a>
+          <a href="../dao_dev/index.html">DAO (Developers)</a>
+        </nav>
+        
+      </div>
+    </header>
+    <main>
+      <div class="wrap">
+        
+<h1>Dependencies</h1>
+<p class="muted">Known data sources, their audit paths, and where they are used in this repo.</p>
+<div class="card">
+  <h2>Regulation context</h2>
+  <ul>
+    <li><a href="../regulation/links.html">EUR-Lex launcher</a></li>
+    <li><a href="../regulation/sources.html">Regulation sources registry</a></li>
+    <li><a href="../regulation/policy_to_evidence_spine.html">Policy-to-evidence spine</a></li>
+  </ul>
+</div>
+<div class="card">
+  <h2>Hansen GFC 2024 v1.12 – definitions/download page</h2>
+<p class="muted">Authoritative dataset definitions/semantics used to interpret Hansen GFC layers (loss, cover, etc.) in EUDR-oriented checks and definition-comparison controls.</p>
+  <ul>
+    <li><b>id</b>: <code>hansen_gfc_definitions</code></li>
+    <li><b>URL</b>: <a href="https://storage.googleapis.com/earthenginepartners-hansen/GFC-2024-v1.12/download.html">https://storage.googleapis.com/earthenginepartners-hansen/GFC-2024-v1.12/download.html</a></li>
+    <li><b>Expected content type</b>: <code>text/html</code></li>
+    <li><b>Server audit path</b>: <code>/Users/server/audit/eudr_dmi/dependencies/hansen_gfc_definitions</code></li>
+  </ul>
+  <h3>Used by</h3>
+  <ul>
+<li><code>demo_mcp_servers.py</code></li>
+<li><code>src/mcp_servers/hansen_gfc_example.py</code></li>
+  </ul>
+
+</div>
+<div class="card">
+  <h2>Maa-amet forest layer reference (v1)</h2>
+<p class="muted">Estonian national forest-presence reference used as an external cross-check input in the Maa-amet forest-area comparison method.</p>
+  <ul>
+    <li><b>id</b>: <code>maa-amet/forest/v1</code></li>
+    <li><b>URL</b>: <a href="https://gsavalik.envir.ee/geoserver/wfs">https://gsavalik.envir.ee/geoserver/wfs</a></li>
+    <li><b>Expected content type</b>: <code>application/xml</code></li>
+    <li><b>Server audit path</b>: <code>/Users/server/audit/eudr_dmi/dependencies/maa_amet_forest_v1</code></li>
+  </ul>
+  <h3>Used by</h3>
+  <ul>
+<li><code>src/eudr_dmi/methods/maa_amet_crosscheck.py</code></li>
+<li><code>src/task3_eudr_reports/run_eudr_report_to_minio.py</code></li>
+<li><code>tests/test_methods_maa_amet_crosscheck.py</code></li>
+  </ul>
+
+</div>
+      </div>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Agentic view</title>
+    <style>
+      :root { --fg:#111; --bg:#fff; --muted:#666; --card:#f6f7f9; --link:#0b5fff; }
+      body { font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+             color: var(--fg); background: var(--bg); margin: 0; }
+      header { border-bottom: 1px solid #e7e7e7; background: #fff; position: sticky; top: 0; }
+      .wrap { max-width: 980px; margin: 0 auto; padding: 16px 20px; }
+      nav a { margin-right: 14px; text-decoration: none; color: var(--link); font-weight: 600; }
+      nav a.active { color: var(--fg); }
+      .crumbs { margin-top: 10px; font-size: 13px; color: var(--muted); }
+      .crumbs a { color: var(--link); text-decoration: none; font-weight: 600; }
+      .crumbs .sep { margin: 0 6px; color: #999; }
+      main { padding: 18px 20px 40px; }
+      h1 { margin: 0 0 6px; font-size: 22px; }
+      h2 { margin-top: 24px; font-size: 18px; }
+      p { line-height: 1.5; }
+      .muted { color: var(--muted); }
+      .back { margin: 0 0 10px; }
+      .back a { color: var(--link); text-decoration: none; font-weight: 600; }
+      .card { background: var(--card); border: 1px solid #e8eaee; border-radius: 12px; padding: 14px 14px; }
+      ul { padding-left: 18px; }
+      code { background: #f1f1f1; padding: 1px 4px; border-radius: 6px; }
+      .md { line-height: 1.55; }
+      .md table { border-collapse: collapse; }
+      .md th, .md td { border: 1px solid #dde0e6; padding: 6px 10px; }
+      .md thead th { background: #eef1f6; }
+      .md .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+      .md .table-wrap table { width: max-content; min-width: 100%; }
+      .grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
+      @media (min-width: 760px) { .grid { grid-template-columns: 1fr 1fr; } }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="wrap">
+        <nav>
+          <a href="../index.html">Home</a>
+          <a href="../articles/index.html">Articles</a>
+          <a href="../dependencies/index.html">Dependencies</a>
+          <a href="../regulation/links.html">Regulation</a>
+          <a href="../regulation/sources.html">Sources</a>
+          <a href="../regulation/policy_to_evidence_spine.html">Spine</a>
+          <a href="index.html" class="active">Views</a>
+          <a href="../aoi_reports/index.html">AOI Reports</a>
+          <a href="../dao_stakeholders/index.html">DAO (Stakeholders)</a>
+          <a href="../dao_dev/index.html">DAO (Developers)</a>
+        </nav>
+        
+      </div>
+    </header>
+    <main>
+      <div class="wrap">
+        
+<div class="md">
+<h1>Agentic View (EUDR DMI GIL)</h1>
+<h2>Agent roles</h2>
+<p>This view describes the intended agent/workflow split for producing inspection-grade artifacts.</p>
+<ul>
+<li><strong>Agent01 — Regulation mirror / watcher</strong></li>
+<li>Owns deterministic acquisition/verification of regulation snapshots and their fingerprints.</li>
+<li>Key docs: <a href="#" title="../regulation/sources.md">docs/regulation/sources.md</a></li>
+<li>
+<p>Tooling: <a href="#" title="../../tools/regulation/acquire_and_hash.py">tools/regulation/acquire_and_hash.py</a></p>
+</li>
+<li>
+<p><strong>Agent02 — Evidence builder (article/control evaluation)</strong></p>
+</li>
+<li>Owns running project-owned method primitives and writing evidence artifacts.</li>
+<li>Method primitives layer (owned here):<ul>
+<li><a href="#" title="../../src/eudr_dmi/methods/deforestation_area.py">src/eudr_dmi/methods/deforestation_area.py</a></li>
+<li><a href="#" title="../../src/eudr_dmi/methods/maa_amet_crosscheck.py">src/eudr_dmi/methods/maa_amet_crosscheck.py</a></li>
+</ul>
+</li>
+<li>
+<p>Article scaffolds:</p>
+<ul>
+<li><a href="#" title="../../src/eudr_dmi/articles/art_09/runner.py">src/eudr_dmi/articles/art_09/runner.py</a></li>
+</ul>
+</li>
+<li>
+<p><strong>Agent03 — Inspector / verifier</strong></p>
+</li>
+<li>Owns verifying integrity/completeness/provenance against the contract and spine.</li>
+<li>Key docs: <a href="#" title="../operations/inspection_checklist.md">docs/operations/inspection_checklist.md</a>, <a href="#" title="../regulation/policy_to_evidence_spine.md">docs/regulation/policy_to_evidence_spine.md</a></li>
+</ul>
+<h2>Deterministic run contract (for all agents)</h2>
+<h3>Bundle root</h3>
+<p>Evidence bundles must be written under the evidence root, by date and bundle id:
+- <code>&lt;evidence_root&gt;/&lt;YYYY-MM-DD&gt;/&lt;bundle_id&gt;/</code></p>
+<p>Filesystem roots are environment-driven:
+- <code>EUDR_DMI_AUDIT_ROOT</code>, <code>EUDR_DMI_REGULATION_ROOT</code>, <code>EUDR_DMI_EVIDENCE_ROOT</code>
+- See <a href="#" title="../operations/runbooks.md">docs/operations/runbooks.md</a></p>
+<h3>Required inspection invariants</h3>
+<ul>
+<li>Completeness + integrity rules are defined in:</li>
+<li><a href="#" title="../architecture/evidence_contract.md">docs/architecture/evidence_contract.md</a></li>
+<li><a href="#" title="../architecture/evidence_bundle_spec.md">docs/architecture/evidence_bundle_spec.md</a></li>
+<li>Traceability rules are defined in:</li>
+<li><a href="#" title="../regulation/policy_to_evidence_spine.md">docs/regulation/policy_to_evidence_spine.md</a></li>
+</ul>
+<h3>What may contain timestamps</h3>
+<p>Determinism expectations are “byte-identical unless explicitly allowed”.
+Allowed timestamp-bearing artifacts (example pattern):
+- execution logs / run logs (must be excluded from equivalence checks or excluded from deterministic hashes)</p>
+<p>See determinism rules in <a href="#" title="../architecture/evidence_bundle_spec.md">docs/architecture/evidence_bundle_spec.md</a>.</p>
+<h3>Tests / sanity checks</h3>
+<ul>
+<li>Method tests: <code>pytest -q -rs tests/test_methods_*</code> (see <a href="#" title="../testing.md">docs/testing.md</a>)</li>
+<li>Doc structure checks: <a href="#" title="../../tests/articles/test_articles_structure_smoke.py">tests/articles/test_articles_structure_smoke.py</a></li>
+</ul>
+<h2>Provenance &amp; ownership</h2>
+<p>Adopted from <code>geospatial_dmi</code> documentation patterns; owned here; divergence expected.</p>
+<p>Provenance record (placeholder):
+- adopted_from_repo: <code>geospatial_dmi</code>
+- adopted_pattern: “agent-oriented navigation view”
+- source_commit_sha: <code>UNKNOWN</code>
+- adoption_date: <code>2026-01-22</code></p>
+</div>
+      </div>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Regulation sources</title>
+    <style>
+      :root { --fg:#111; --bg:#fff; --muted:#666; --card:#f6f7f9; --link:#0b5fff; }
+      body { font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+             color: var(--fg); background: var(--bg); margin: 0; }
+      header { border-bottom: 1px solid #e7e7e7; background: #fff; position: sticky; top: 0; }
+      .wrap { max-width: 980px; margin: 0 auto; padding: 16px 20px; }
+      nav a { margin-right: 14px; text-decoration: none; color: var(--link); font-weight: 600; }
+      nav a.active { color: var(--fg); }
+      .crumbs { margin-top: 10px; font-size: 13px; color: var(--muted); }
+      .crumbs a { color: var(--link); text-decoration: none; font-weight: 600; }
+      .crumbs .sep { margin: 0 6px; color: #999; }
+      main { padding: 18px 20px 40px; }
+      h1 { margin: 0 0 6px; font-size: 22px; }
+      h2 { margin-top: 24px; font-size: 18px; }
+      p { line-height: 1.5; }
+      .muted { color: var(--muted); }
+      .back { margin: 0 0 10px; }
+      .back a { color: var(--link); text-decoration: none; font-weight: 600; }
+      .card { background: var(--card); border: 1px solid #e8eaee; border-radius: 12px; padding: 14px 14px; }
+      ul { padding-left: 18px; }
+      code { background: #f1f1f1; padding: 1px 4px; border-radius: 6px; }
+      .md { line-height: 1.55; }
+      .md table { border-collapse: collapse; }
+      .md th, .md td { border: 1px solid #dde0e6; padding: 6px 10px; }
+      .md thead th { background: #eef1f6; }
+      .md .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+      .md .table-wrap table { width: max-content; min-width: 100%; }
+      .grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
+      @media (min-width: 760px) { .grid { grid-template-columns: 1fr 1fr; } }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="wrap">
+        <nav>
+          <a href="../index.html">Home</a>
+          <a href="../articles/index.html">Articles</a>
+          <a href="../dependencies/index.html">Dependencies</a>
+          <a href="links.html" class="active">Regulation</a>
+          <a href="sources.html">Sources</a>
+          <a href="policy_to_evidence_spine.html">Spine</a>
+          <a href="../views/index.html">Views</a>
+          <a href="../aoi_reports/index.html">AOI Reports</a>
+          <a href="../dao_stakeholders/index.html">DAO (Stakeholders)</a>
+          <a href="../dao_dev/index.html">DAO (Developers)</a>
+        </nav>
+        
+      </div>
+    </header>
+    <main>
+      <div class="wrap">
+        
+<div class="md">
+<h1>Regulation Sources Registry</h1>
+<p>Purpose: record authoritative source snapshots (HTML/PDF) and their SHA-256 fingerprints without embedding the regulation text in this repository.</p>
+<p>Server audit root: <code>/Users/server/audit/eudr_dmi</code></p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Source</th>
+<th>URL</th>
+<th>Local Path (server)</th>
+<th>SHA256</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EUDR 2023/1115 — OJ (ELI) HTML</td>
+<td>https://eur-lex.europa.eu/eli/reg/2023/1115/oj/eng</td>
+<td><code>/Users/server/audit/eudr_dmi/regulation/eudr_2023_1115/eudr_2023_1115_oj_eng.html</code></td>
+<td>TODO</td>
+<td>Acquire via the workflow below; do not paste text into repo.</td>
+</tr>
+<tr>
+<td>EUDR 2023/1115 — Consolidated HTML (2024-12-26)</td>
+<td>https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:02023R1115-20241226</td>
+<td><code>/Users/server/audit/eudr_dmi/regulation/eudr_2023_1115/eudr_2023_1115_consolidated_2024-12-26_en.html</code></td>
+<td>TODO</td>
+<td>Acquire via the workflow below; do not paste text into repo.</td>
+</tr>
+<tr>
+<td>EUDR 2023/1115 — CELEX PDF endpoint (32023R1115)</td>
+<td>https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=CELEX:32023R1115</td>
+<td><code>/Users/server/audit/eudr_dmi/regulation/eudr_2023_1115/eudr_2023_1115_celex_32023R1115_en.pdf</code></td>
+<td>TODO</td>
+<td>Acquire via the workflow below; hash whatever is stored after verification.</td>
+</tr>
+</tbody>
+</table></div>
+<h2>Operator workflow (WAF-safe)</h2>
+<p>Some EUR-Lex endpoints may be protected by WAF/login challenges depending on network and headers. This project does not attempt to bypass challenges.</p>
+<p>a) Open the link launcher in a browser:
+- <a href="links.html">docs/regulation/links.html</a></p>
+<p>b) If the browser can access the source, save the artefact to the exact server path shown on the launcher under <code>/Users/server/audit/eudr_dmi/regulation/...</code>.</p>
+<p>c) Run the acquisition tool to verify non-empty files, compute SHA-256, and update registries:</p>
+<pre><code class="language-sh">python tools/regulation/acquire_and_hash.py --verify
+</code></pre>
+<p>Optional: if your browser session is required and you can export cookies, see <a href="#" title="../operations/secrets_handling.md">docs/operations/secrets_handling.md</a> and run:</p>
+<pre><code class="language-sh">python tools/regulation/acquire_and_hash.py --fetch --cookie-jar /Users/server/secrets/eudr_dmi/eurlex_cookies.txt
+</code></pre>
+<h2>How to mirror EUR-Lex sources (deterministic, audit-grade)</h2>
+<p>This repository includes a deterministic “EUR-Lex mirror” for CELEX:32023R1115 that writes a run folder with hashes and metadata.</p>
+<p>Note: https://eur-lex.europa.eu/legal-content/EN/LSU/?uri=CELEX:32023R1115 is treated as an entry point to the EUDR “digital twin”. Re-run the mirror whenever this entry point (or the underlying regulation artefacts) change.</p>
+<p>WAF note: LSU can be blocked in headless/automated environments. The mirror records an explicit entrypoint watch file so we still get a deterministic change signal even when LSU is unreachable.</p>
+<p>Command:</p>
+<pre><code class="language-sh">python scripts/fetch_eurlex_eudr_32023R1115.py \
+    --out /Users/server/audit/eudr_dmi/regulation/eudr_2023_1115 \
+    --date 2026-01-21
+</code></pre>
+<p>Output folder:
+- <code>audit/eudr_dmi/regulation/eudr_2023_1115/&lt;YYYY-MM-DD&gt;/</code></p>
+<p>What to check:
+- Expected files in the run folder:
+    - <code>metadata.json</code> (machine-readable record of per-source status, headers when available, and hashes)
+    - <code>manifest.sha256</code> (sorted; covers stored artefacts + metadata)
+    - <code>summary.html</code>
+    - <code>lsu_entry.html</code> (EUDR digital twin entry point; when reachable)
+    - <code>regulation.pdf</code>
+    - Optional when accessible: <code>regulation.html</code>, <code>eli_oj.html</code>
+    - Optional on failures: <code>fetch.log</code>
+- Digital twin watch outputs:
+    - <code>entrypoint_status.json</code> records LSU reachability and evidence.
+        - If LSU is reachable (<code>http_status=200</code>), evidence includes <code>lsu_entry_sha256</code> (hash of <code>lsu_entry.html</code>) and an extracted <code>lsu_updated_on</code> date if present.
+        - If LSU is not reachable (e.g. WAF), evidence includes a fallback fingerprint derived from the most stable available endpoints (PDF/HTML/ELI hashes and headers when available).
+    - <code>metadata.json</code> includes a top-level <code>needs_update</code> boolean computed by comparing this run’s entrypoint watch fingerprints to the latest prior run folder under the same <code>--out</code> base.
+    - When <code>needs_update=true</code>, the mirror writes <code>digital_twin_trigger.json</code>. Downstream “digital twin” jobs should watch for this file.
+- If EUR-Lex blocks requests (HTTP 202 / WAF challenge), the run is recorded as <code>status=partial</code> and the error is captured in metadata (and <code>fetch.log</code> when present).</p>
+<p>Expected SHA256SUMS paths (server):
+- <code>/Users/server/audit/eudr_dmi/regulation/eudr_2023_1115/SHA256SUMS.txt</code>
+- <code>/Users/server/audit/eudr_dmi/regulation/guidance/SHA256SUMS.txt</code> (if guidance PDFs are added)</p>
+<h2>Scheduled watcher (daily)</h2>
+<p>For downstream automation (cron/launchd/GitHub Actions), use the watcher wrapper which runs the mirror and exits with a meaningful code:</p>
+<pre><code class="language-sh">python scripts/watch_eurlex_eudr_32023R1115.py \
+    --out /Users/server/audit/eudr_dmi/regulation/eudr_2023_1115
+</code></pre>
+<p>Exit codes:
+- <code>0</code> = no change (<code>needs_update=false</code>)
+- <code>2</code> = change detected / update needed (<code>needs_update=true</code> with a strong fingerprint change)
+- <code>3</code> = partial / upstream blocked / uncertain (e.g. LSU WAF challenge without a confident fingerprint diff)</p>
+<h2>Manual verification checklist</h2>
+<p>See <a href="#" title="mirror_manual_checklist.md">docs/regulation/mirror_manual_checklist.md</a>.</p>
+</div>
+      </div>
+    </main>
+  </body>
+</html>

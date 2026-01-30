@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Digital twin view</title>
+    <style>
+      :root { --fg:#111; --bg:#fff; --muted:#666; --card:#f6f7f9; --link:#0b5fff; }
+      body { font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+             color: var(--fg); background: var(--bg); margin: 0; }
+      header { border-bottom: 1px solid #e7e7e7; background: #fff; position: sticky; top: 0; }
+      .wrap { max-width: 980px; margin: 0 auto; padding: 16px 20px; }
+      nav a { margin-right: 14px; text-decoration: none; color: var(--link); font-weight: 600; }
+      nav a.active { color: var(--fg); }
+      .crumbs { margin-top: 10px; font-size: 13px; color: var(--muted); }
+      .crumbs a { color: var(--link); text-decoration: none; font-weight: 600; }
+      .crumbs .sep { margin: 0 6px; color: #999; }
+      main { padding: 18px 20px 40px; }
+      h1 { margin: 0 0 6px; font-size: 22px; }
+      h2 { margin-top: 24px; font-size: 18px; }
+      p { line-height: 1.5; }
+      .muted { color: var(--muted); }
+      .back { margin: 0 0 10px; }
+      .back a { color: var(--link); text-decoration: none; font-weight: 600; }
+      .card { background: var(--card); border: 1px solid #e8eaee; border-radius: 12px; padding: 14px 14px; }
+      ul { padding-left: 18px; }
+      code { background: #f1f1f1; padding: 1px 4px; border-radius: 6px; }
+      .md { line-height: 1.55; }
+      .md table { border-collapse: collapse; }
+      .md th, .md td { border: 1px solid #dde0e6; padding: 6px 10px; }
+      .md thead th { background: #eef1f6; }
+      .md .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+      .md .table-wrap table { width: max-content; min-width: 100%; }
+      .grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
+      @media (min-width: 760px) { .grid { grid-template-columns: 1fr 1fr; } }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="wrap">
+        <nav>
+          <a href="../index.html">Home</a>
+          <a href="../articles/index.html">Articles</a>
+          <a href="../dependencies/index.html">Dependencies</a>
+          <a href="../regulation/links.html">Regulation</a>
+          <a href="../regulation/sources.html">Sources</a>
+          <a href="../regulation/policy_to_evidence_spine.html">Spine</a>
+          <a href="index.html" class="active">Views</a>
+          <a href="../aoi_reports/index.html">AOI Reports</a>
+          <a href="../dao_stakeholders/index.html">DAO (Stakeholders)</a>
+          <a href="../dao_dev/index.html">DAO (Developers)</a>
+        </nav>
+        
+      </div>
+    </header>
+    <main>
+      <div class="wrap">
+        
+<div class="md">
+<h1>Digital Twin View (EUDR DMI GIL)</h1>
+<h2>Change loop: regulation × data × method</h2>
+<p>The EUDR Digital Twin is treated as an inspection-grade representation of:
+- Authoritative regulation snapshots (mirrored, hashed, and versioned)
+- Upstream datasets/services used as dependencies (with provenance)
+- Project-owned methods + decision policies (deterministic, testable)
+- Evidence bundles that link outcomes back to those sources</p>
+<p>Primary model: <a href="#" title="../architecture/digital_twin_model.md">docs/architecture/digital_twin_model.md</a></p>
+<h2>Trigger-and-rerun rules (high-level)</h2>
+<p>These rules describe what changes must force which re-runs.</p>
+<h3>Regulation changes</h3>
+<p>If regulation source artifacts change fingerprint (SHA-256) or a new mirror run is recorded:
+- Re-run all controls that cite those sources in provenance or acceptance criteria.
+- Update/verify:
+  - <a href="#" title="../regulation/sources.json">docs/regulation/sources.json</a>
+  - <a href="#" title="../regulation/sources.md">docs/regulation/sources.md</a></p>
+<h3>Upstream dependency changes</h3>
+<p>If a dependency provenance/currency changes materially (new dataset version, endpoint behavior change, etc.):
+- Re-run impacted methods and refresh provenance artifacts.
+- Update the dependency register:
+  - <a href="#" title="../architecture/dependency_register.md">docs/architecture/dependency_register.md</a></p>
+<h3>Method / policy changes</h3>
+<p>If a project-owned method changes (logic, thresholds, canonicalization, output schema):
+- Increment and record method versioning according to:
+  - <a href="#" title="../architecture/change_control.md">docs/architecture/change_control.md</a>
+- Re-run impacted controls and refresh evidence bundles.</p>
+<h3>Evidence schema / contract changes</h3>
+<p>If evidence bundle spec or contract changes:
+- Update acceptance criteria mapping:
+  - <a href="#" title="../regulation/policy_to_evidence_spine.md">docs/regulation/policy_to_evidence_spine.md</a>
+- Ensure operations guidance remains consistent:
+  - <a href="#" title="../operations/runbooks.md">docs/operations/runbooks.md</a>
+  - <a href="#" title="../operations/inspection_checklist.md">docs/operations/inspection_checklist.md</a></p>
+<h2>Canonical links</h2>
+<ul>
+<li>Change control: <a href="#" title="../architecture/change_control.md">docs/architecture/change_control.md</a></li>
+<li>Evidence contract: <a href="#" title="../architecture/evidence_contract.md">docs/architecture/evidence_contract.md</a></li>
+<li>Policy-to-evidence spine: <a href="#" title="../regulation/policy_to_evidence_spine.md">docs/regulation/policy_to_evidence_spine.md</a></li>
+</ul>
+<h2>Provenance &amp; ownership</h2>
+<p>Adopted from <code>geospatial_dmi</code> documentation patterns; owned here; divergence expected.</p>
+<p>Provenance record (placeholder):
+- adopted_from_repo: <code>geospatial_dmi</code>
+- adopted_pattern: “digital-twin navigation view”
+- source_commit_sha: <code>UNKNOWN</code>
+- adoption_date: <code>2026-01-22</code></p>
+</div>
+      </div>
+    </main>
+  </body>
+</html>

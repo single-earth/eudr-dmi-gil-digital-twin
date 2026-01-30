@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Articles Index</title>
+    <style>
+      :root { --fg:#111; --bg:#fff; --muted:#666; --card:#f6f7f9; --link:#0b5fff; }
+      body { font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+             color: var(--fg); background: var(--bg); margin: 0; }
+      header { border-bottom: 1px solid #e7e7e7; background: #fff; position: sticky; top: 0; }
+      .wrap { max-width: 980px; margin: 0 auto; padding: 16px 20px; }
+      nav a { margin-right: 14px; text-decoration: none; color: var(--link); font-weight: 600; }
+      nav a.active { color: var(--fg); }
+      .crumbs { margin-top: 10px; font-size: 13px; color: var(--muted); }
+      .crumbs a { color: var(--link); text-decoration: none; font-weight: 600; }
+      .crumbs .sep { margin: 0 6px; color: #999; }
+      main { padding: 18px 20px 40px; }
+      h1 { margin: 0 0 6px; font-size: 22px; }
+      h2 { margin-top: 24px; font-size: 18px; }
+      p { line-height: 1.5; }
+      .muted { color: var(--muted); }
+      .back { margin: 0 0 10px; }
+      .back a { color: var(--link); text-decoration: none; font-weight: 600; }
+      .card { background: var(--card); border: 1px solid #e8eaee; border-radius: 12px; padding: 14px 14px; }
+      ul { padding-left: 18px; }
+      code { background: #f1f1f1; padding: 1px 4px; border-radius: 6px; }
+      .md { line-height: 1.55; }
+      .md table { border-collapse: collapse; }
+      .md th, .md td { border: 1px solid #dde0e6; padding: 6px 10px; }
+      .md thead th { background: #eef1f6; }
+      .md .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+      .md .table-wrap table { width: max-content; min-width: 100%; }
+      .grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
+      @media (min-width: 760px) { .grid { grid-template-columns: 1fr 1fr; } }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="wrap">
+        <nav>
+          <a href="../index.html">Home</a>
+          <a href="index.html" class="active">Articles</a>
+          <a href="../dependencies/index.html">Dependencies</a>
+          <a href="../regulation/links.html">Regulation</a>
+          <a href="../regulation/sources.html">Sources</a>
+          <a href="../regulation/policy_to_evidence_spine.html">Spine</a>
+          <a href="../views/index.html">Views</a>
+          <a href="../aoi_reports/index.html">AOI Reports</a>
+          <a href="../dao_stakeholders/index.html">DAO (Stakeholders)</a>
+          <a href="../dao_dev/index.html">DAO (Developers)</a>
+        </nav>
+        
+      </div>
+    </header>
+    <main>
+      <div class="wrap">
+        
+<h1>Articles Index</h1>
+<p class="muted">Summaries are non-verbatim orientation notes for implementers and auditors.</p>
+<div class="card">
+  <h2>Quick links</h2>
+  <ul>
+    <li><a href="../regulation/links.html">EUR-Lex launcher</a></li>
+    <li><a href="../regulation/sources.html">Regulation sources registry</a></li>
+    <li><a href="../regulation/policy_to_evidence_spine.html">Policy-to-evidence spine</a></li>
+  </ul>
+</div>
+<div class="grid">
+<div class="card">
+  <h2><a href="article_09.html">Article 9 — Information requirements</a></h2>
+  <ul>
+<li>Focus: what information must be collected and retained to demonstrate compliant sourcing.</li>
+<li>Typical themes: identifying products/commodities, origin/production details, and traceability information needed to support downstream due diligence.</li>
+<li>Audit intent: ensure the evidence bundle captures required inputs and provenance needed to substantiate claims.</li>
+  </ul>
+</div>
+<div class="card">
+  <h2><a href="article_10.html">Article 10 — Risk assessment</a></h2>
+  <ul>
+<li>Focus: assessing the risk that products are linked to prohibited outcomes (e.g., deforestation/illegality) using available information.</li>
+<li>Typical themes: combining source data, checks, and contextual risk signals into a reasoned assessment outcome.</li>
+<li>Audit intent: confirm decision logic is evidence-backed, reproducible, and that uncertainty/limitations are recorded.</li>
+  </ul>
+</div>
+<div class="card">
+  <h2><a href="article_11.html">Article 11 — Risk mitigation</a></h2>
+  <ul>
+<li>Focus: actions and controls to address risks identified by the assessment.</li>
+<li>Typical themes: applying additional controls, seeking further information, constraining sourcing, or other mitigation steps until risk is acceptable.</li>
+<li>Audit intent: confirm mitigation actions are traceable to risks and supported by documented evidence.</li>
+  </ul>
+</div>
+</div>
+      </div>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Task view</title>
+    <style>
+      :root { --fg:#111; --bg:#fff; --muted:#666; --card:#f6f7f9; --link:#0b5fff; }
+      body { font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+             color: var(--fg); background: var(--bg); margin: 0; }
+      header { border-bottom: 1px solid #e7e7e7; background: #fff; position: sticky; top: 0; }
+      .wrap { max-width: 980px; margin: 0 auto; padding: 16px 20px; }
+      nav a { margin-right: 14px; text-decoration: none; color: var(--link); font-weight: 600; }
+      nav a.active { color: var(--fg); }
+      .crumbs { margin-top: 10px; font-size: 13px; color: var(--muted); }
+      .crumbs a { color: var(--link); text-decoration: none; font-weight: 600; }
+      .crumbs .sep { margin: 0 6px; color: #999; }
+      main { padding: 18px 20px 40px; }
+      h1 { margin: 0 0 6px; font-size: 22px; }
+      h2 { margin-top: 24px; font-size: 18px; }
+      p { line-height: 1.5; }
+      .muted { color: var(--muted); }
+      .back { margin: 0 0 10px; }
+      .back a { color: var(--link); text-decoration: none; font-weight: 600; }
+      .card { background: var(--card); border: 1px solid #e8eaee; border-radius: 12px; padding: 14px 14px; }
+      ul { padding-left: 18px; }
+      code { background: #f1f1f1; padding: 1px 4px; border-radius: 6px; }
+      .md { line-height: 1.55; }
+      .md table { border-collapse: collapse; }
+      .md th, .md td { border: 1px solid #dde0e6; padding: 6px 10px; }
+      .md thead th { background: #eef1f6; }
+      .md .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+      .md .table-wrap table { width: max-content; min-width: 100%; }
+      .grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
+      @media (min-width: 760px) { .grid { grid-template-columns: 1fr 1fr; } }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="wrap">
+        <nav>
+          <a href="../index.html">Home</a>
+          <a href="../articles/index.html">Articles</a>
+          <a href="../dependencies/index.html">Dependencies</a>
+          <a href="../regulation/links.html">Regulation</a>
+          <a href="../regulation/sources.html">Sources</a>
+          <a href="../regulation/policy_to_evidence_spine.html">Spine</a>
+          <a href="index.html" class="active">Views</a>
+          <a href="../aoi_reports/index.html">AOI Reports</a>
+          <a href="../dao_stakeholders/index.html">DAO (Stakeholders)</a>
+          <a href="../dao_dev/index.html">DAO (Developers)</a>
+        </nav>
+        
+      </div>
+    </header>
+    <main>
+      <div class="wrap">
+        
+<div class="md">
+<h1>Task View (EUDR DMI GIL)</h1>
+<h2>Task framing</h2>
+<p>This view organizes the repo by the operator/inspection tasks it must support.</p>
+<ul>
+<li><strong>Task 1 — Establish authoritative inputs</strong>: ensure regulation snapshots and upstream dependencies are recorded, traceable, and verifiable.</li>
+<li><strong>Task 2 — Produce method outcomes</strong>: run deterministic EUDR methods (or scaffolds) and record outputs with stable fingerprints.</li>
+<li><strong>Task 3 — Package for inspection</strong>: produce evidence bundles with integrity metadata and clear acceptance criteria.</li>
+</ul>
+<h2>Task-to-artifact map</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Task</th>
+<th>What “done” means</th>
+<th>Canonical artifacts (paths)</th>
+<th>Tests / checks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Task 1: authoritative inputs</td>
+<td>Regulation sources are referenced and can be verified without embedding regulation text in-repo.</td>
+<td><a href="#" title="../regulation/sources.md">docs/regulation/sources.md</a>, <a href="#" title="../regulation/sources.json">docs/regulation/sources.json</a>, <a href="../regulation/links.html">docs/regulation/links.html</a>, <a href="#" title="../../tools/regulation/acquire_and_hash.py">tools/regulation/acquire_and_hash.py</a></td>
+<td><code>python tools/regulation/acquire_and_hash.py --verify</code> (server files), plus <a href="#" title="../../tests/test_regulation_registry_files_exist.py">tests/test_regulation_registry_files_exist.py</a></td>
+</tr>
+<tr>
+<td>Task 2: method outcomes</td>
+<td>Deterministic method primitives exist and have stable input fingerprints; expected skips are documented.</td>
+<td><a href="#" title="../../src/eudr_dmi/methods/deforestation_area.py">src/eudr_dmi/methods/deforestation_area.py</a>, <a href="#" title="../../src/eudr_dmi/methods/maa_amet_crosscheck.py">src/eudr_dmi/methods/maa_amet_crosscheck.py</a>, <a href="#" title="../../requirements-methods.txt">requirements-methods.txt</a>, <a href="#" title="../../scripts/check_method_deps.py">scripts/check_method_deps.py</a>, <a href="#" title="../testing.md">docs/testing.md</a></td>
+<td><code>python scripts/check_method_deps.py</code>, <code>pytest -q -rs tests/test_methods_*</code> (see <a href="#" title="../../tests/test_methods_deforestation_area.py">tests/test_methods_deforestation_area.py</a>, <a href="#" title="../../tests/test_methods_maa_amet_crosscheck.py">tests/test_methods_maa_amet_crosscheck.py</a>)</td>
+</tr>
+<tr>
+<td>Task 3: inspection packaging</td>
+<td>Evidence contracts and checklists define what to produce and how to verify; PRs are gated on canonical doc structure.</td>
+<td><a href="#" title="../architecture/evidence_contract.md">docs/architecture/evidence_contract.md</a>, <a href="#" title="../architecture/evidence_bundle_spec.md">docs/architecture/evidence_bundle_spec.md</a>, <a href="#" title="../operations/inspection_checklist.md">docs/operations/inspection_checklist.md</a>, <a href="#" title="../../tools/ci/check_pr_gates.py">tools/ci/check_pr_gates.py</a></td>
+<td><code>python tools/ci/check_pr_gates.py</code> (CI gate), plus <a href="#" title="../../tests/articles/test_articles_structure_smoke.py">tests/articles/test_articles_structure_smoke.py</a></td>
+</tr>
+</tbody>
+</table></div>
+<h2>Key navigation shortcuts</h2>
+<ul>
+<li>Evidence contract: <a href="#" title="../architecture/evidence_contract.md">docs/architecture/evidence_contract.md</a></li>
+<li>Evidence bundle spec: <a href="#" title="../architecture/evidence_bundle_spec.md">docs/architecture/evidence_bundle_spec.md</a></li>
+<li>Policy-to-evidence spine: <a href="#" title="../regulation/policy_to_evidence_spine.md">docs/regulation/policy_to_evidence_spine.md</a></li>
+<li>Runbook: <a href="#" title="../operations/runbooks.md">docs/operations/runbooks.md</a></li>
+<li>Article 09 scaffold runner: <a href="#" title="../../src/eudr_dmi/articles/art_09/runner.py">src/eudr_dmi/articles/art_09/runner.py</a></li>
+</ul>
+<h2>Provenance &amp; ownership</h2>
+<p>Adopted from <code>geospatial_dmi</code> documentation patterns; owned here; divergence expected.</p>
+<p>Provenance record (placeholder):
+- adopted_from_repo: <code>geospatial_dmi</code>
+- adopted_pattern: “task-oriented navigation view”
+- source_commit_sha: <code>UNKNOWN</code>
+- adoption_date: <code>2026-01-22</code></p>
+</div>
+      </div>
+    </main>
+  </body>
+</html>
