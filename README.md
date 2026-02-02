@@ -91,6 +91,10 @@ This portal is the public-facing, non-authoritative Digital Twin interface. It i
 - [docs/agent_prompts/dao_dev_prompt.md](docs/agent_prompts/dao_dev_prompt.md)
 - [docs/agent_prompts/dao_stakeholders_prompt.md](docs/agent_prompts/dao_stakeholders_prompt.md)
 
+## Inspection & DAO Entry Point
+
+- [docs/INSPECTION_INDEX.md](docs/INSPECTION_INDEX.md)
+
 
 
 

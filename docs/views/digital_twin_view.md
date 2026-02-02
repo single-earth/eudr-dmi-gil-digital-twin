@@ -46,6 +46,14 @@ If evidence bundle spec or contract changes:
 - Evidence contract: [docs/architecture/evidence_contract.md](../architecture/evidence_contract.md)
 - Policy-to-evidence spine: [docs/regulation/policy_to_evidence_spine.md](../regulation/policy_to_evidence_spine.md)
 
+## Implementation inspection summaries
+
+These mirrors are for inspection only. All changes must be proposed against authoritative files in eudr-dmi-gil.
+
+- [docs/implementation_mirror/report_pipeline.md](../implementation_mirror/report_pipeline.md)
+- [docs/implementation_mirror/dependency_model.md](../implementation_mirror/dependency_model.md)
+- [docs/implementation_mirror/report_outputs.md](../implementation_mirror/report_outputs.md)
+
 ## How stakeholders use this view in Q/A
 
 - Review the change loop to frame questions about traceability and reproducibility.

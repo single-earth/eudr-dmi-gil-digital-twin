@@ -37,6 +37,14 @@ A) DT portal recommendations
 B) eudr-dmi-gil evidence/mapping/code change recommendations
 C) testing/regeneration/runbook recommendations
 
+## Implementation inspection summaries
+
+These mirrors are for inspection only. All changes must be proposed against authoritative files in eudr-dmi-gil.
+
+- [docs/implementation_mirror/report_pipeline.md](../implementation_mirror/report_pipeline.md)
+- [docs/implementation_mirror/dependency_model.md](../implementation_mirror/dependency_model.md)
+- [docs/implementation_mirror/report_outputs.md](../implementation_mirror/report_outputs.md)
+
 Create:
 
 ```
