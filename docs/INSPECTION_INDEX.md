@@ -1,33 +1,68 @@
-# Inspection Index (Digital Twin Portal)
+# Inspection Index (Authoritative Implementation)
+
+This index enumerates all authoritative documentation relevant for
+EUDR DAO inspection, proposal formulation, and developer implementation
+in the eudr-dmi-gil repository.
+
+It is the canonical entry point for:
+- Stakeholders inspecting implementation behaviour via the Digital Twin
+- AI engines (EUDR DAO Digital Twin Engineer or similar)
+- Developers reviewing or implementing DAO proposals
 
 ## Authority boundary
 
-This repository is the public, non-authoritative Digital Twin portal. Authoritative implementation and deterministic outputs live in eudr-dmi-gil.
+- This repository (**eudr-dmi-gil**) is the authoritative source for:
+  - Evidence contracts
+  - Data acquisition and validation logic
+  - AOI report generation pipelines
+  - Deterministic outputs and tests
+- The Digital Twin repository is the public, non-authoritative inspection
+  and governance portal:
+  https://github.com/GeorgeMadlis/eudr-dmi-gil-digital-twin
 
-## Portal views
+Inspection, critique, and proposals may reference this repository,
+but no compliance claims are made here.
 
-- [docs/views/digital_twin_view.md](views/digital_twin_view.md)
-- [docs/views/agentic_view.md](views/agentic_view.md)
-- [docs/views/task_view.md](views/task_view.md)
+## Mandatory grounding rule
 
-## Regulation spine and sources
+Any DAO proposal that recommends changes to implementation MUST:
+- Reference one or more files listed in this index (path-level grounding), or
+- Explicitly state an evidence gap if grounding is not possible.
 
-- [docs/regulation/policy_to_evidence_spine.md](regulation/policy_to_evidence_spine.md)
-- [docs/regulation/sources.md](regulation/sources.md)
+## Architecture
 
-## DAO prompts
+- Report pipeline architecture (ADR)  
+  → docs/architecture/decision_records/0001-report-pipeline-architecture.md
+- Dependency register (logical model)  
+  → docs/architecture/dependency_register.md
 
-- [docs/agent_prompts/dao_stakeholders_prompt.md](agent_prompts/dao_stakeholders_prompt.md)
-- [docs/agent_prompts/dao_dev_prompt.md](agent_prompts/dao_dev_prompt.md)
+## Dependencies and Evidence Sources
 
-## Implementation mirror (authoritative references)
+- Dependency model overview  
+  → docs/dependencies/README.md
+- Evidence source definitions (authoritative)  
+  → docs/dependencies/sources.md
 
-- Reports: https://github.com/GeorgeMadlis/eudr-dmi-gil/blob/main/docs/reports/README.md
-- AOI runbook: https://github.com/GeorgeMadlis/eudr-dmi-gil/blob/main/docs/reports/runbook_generate_aoi_report.md
-- Architecture ADR: https://github.com/GeorgeMadlis/eudr-dmi-gil/blob/main/docs/architecture/decision_records/0001-report-pipeline-architecture.md
-- Dependency register: https://github.com/GeorgeMadlis/eudr-dmi-gil/blob/main/docs/architecture/dependency_register.md
-- Dependencies registry: https://github.com/GeorgeMadlis/eudr-dmi-gil/blob/main/docs/dependencies/README.md
-- Dependency sources: https://github.com/GeorgeMadlis/eudr-dmi-gil/blob/main/docs/dependencies/sources.md
-- Environment setup: https://github.com/GeorgeMadlis/eudr-dmi-gil/blob/main/docs/operations/environment_setup.md
-- MinIO setup: https://github.com/GeorgeMadlis/eudr-dmi-gil/blob/main/docs/operations/minio_setup.md
-- Migration runbook: https://github.com/GeorgeMadlis/eudr-dmi-gil/blob/main/docs/operations/migration_runbook.md
+## Reports and Outputs
+
+- Report structure, guarantees, and artefacts  
+  → docs/reports/README.md
+- AOI report generation runbook  
+  → docs/reports/runbook_generate_aoi_report.md
+
+## Operations (Execution Environment)
+
+- Environment setup  
+  → docs/operations/environment_setup.md
+- MinIO configuration (private artefact storage)  
+  → docs/operations/minio_setup.md
+- Migration and regeneration procedures  
+  → docs/operations/migration_runbook.md
+
+## Related inspection surface (Digital Twin)
+
+For public inspection, examples, and DAO workflows, see:
+- Digital Twin portal (GitHub Pages):
+  https://georgemadlis.github.io/eudr-dmi-gil-digital-twin/site/index.html
+- Digital Twin repository:
+  https://github.com/GeorgeMadlis/eudr-dmi-gil-digital-twin

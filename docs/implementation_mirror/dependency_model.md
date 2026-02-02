@@ -1,23 +1,42 @@
-# Dependency Model (Implementation Mirror)
+# Dependency & Evidence Model – Inspection Summary (Non-Authoritative)
 
-## Non-authoritative notice
+## Purpose
 
-This document is a non-authoritative mirror for inspection only. The authoritative implementation and deterministic logic live in the eudr-dmi-gil repository.
+This document summarizes how dependencies and evidence sources are modeled for EUDR inspection and traceability.
 
-## Summary (dependency register and evidence sources)
+## Source of Truth
 
-- The dependency register defines stable public paths used by the DT portal.
-- Dependency sources record upstream identifiers, URLs, and audit paths.
-- Source mirroring and provenance are handled in the implementation repo.
+- https://github.com/GeorgeMadlis/eudr-dmi-gil/blob/main/docs/architecture/dependency_register.md
+- https://github.com/GeorgeMadlis/eudr-dmi-gil/blob/main/docs/dependencies/sources.md
 
-## Authoritative sources
+## What a Dependency Entry Represents
 
-- Dependency register: https://github.com/GeorgeMadlis/eudr-dmi-gil/blob/main/docs/architecture/dependency_register.md
-- Dependencies overview: https://github.com/GeorgeMadlis/eudr-dmi-gil/blob/main/docs/dependencies/README.md
-- Dependency sources: https://github.com/GeorgeMadlis/eudr-dmi-gil/blob/main/docs/dependencies/sources.md
+- ID
+- External source (URL / provider)
+- Content type
+- Audit path / provenance
+- “Used by” locations in code
 
-## How to propose changes
+## How Dependencies Appear in the Digital Twin
 
-Use the DAO workflow and stakeholder prompt:
-- [docs/governance/roles_and_workflow.md](../governance/roles_and_workflow.md)
-- [docs/agent_prompts/dao_stakeholders_prompt.md](../agent_prompts/dao_stakeholders_prompt.md)
+- Dependencies page
+- Policy-to-evidence spine references
+
+## Inspection Checklist
+
+- Reproducibility
+- Provenance clarity
+- Explicit linkage to AOI outputs
+
+## How to Propose Dependency Changes
+
+- New source vs modification
+- Required fields
+- File-level grounding requirements
+
+## See also
+
+- [docs/INSPECTION_INDEX.md](../INSPECTION_INDEX.md)
+- [docs/governance/dte_instructions.md](../governance/dte_instructions.md)
+- [docs/regulation/policy_to_evidence_spine.md](../regulation/policy_to_evidence_spine.md)
+- [docs/agent_prompts/dao_dev_prompt.md](../agent_prompts/dao_dev_prompt.md)

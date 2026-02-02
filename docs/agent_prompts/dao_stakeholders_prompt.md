@@ -5,6 +5,12 @@
 1) If the bundle contains `machine/bundle_manifest.yaml`, start there.
 2) Otherwise start at `machine/dao_stakeholders/view.yaml`.
 
+## Canonical DTE Instructions
+
+These prompts are governed by the canonical DTE instructions.
+
+- [docs/governance/dte_instructions.md](../governance/dte_instructions.md)
+
 ## Closed World Rule
 
 Treat the bundle as a closed world.
@@ -30,6 +36,15 @@ When answering questions:
 When the Q/A session ends, draft a concrete proposal folder under `proposals/`.
 
 **Stakeholder confirmation is required before persisting a proposal.** If confirmation is not explicit, pause and request it.
+
+Final Session Closeout must be convertible into the DAO proposal schema:
+- [docs/dao/dao_proposal_schema.yaml](../dao/dao_proposal_schema.yaml)
+
+Populate explicitly:
+- `grounding.portal_references`
+- `grounding.implementation_references`
+
+Reject proposals that lack file-level grounding unless marked as an evidence gap (`evidence_gap.present: true`).
 
 Standardized end-of-session output:
 
@@ -116,6 +131,13 @@ refs:
 ## See also
 
 - [README.md](../../README.md)
+- [docs/dao/dao_proposal_schema.yaml](../dao/dao_proposal_schema.yaml)
 - [docs/governance/roles_and_workflow.md](../governance/roles_and_workflow.md)
 - [docs/regulation/policy_to_evidence_spine.md](../regulation/policy_to_evidence_spine.md)
 ```
+
+## See also
+
+- [docs/governance/dte_instructions.md](../governance/dte_instructions.md)
+- [docs/INSPECTION_INDEX.md](../INSPECTION_INDEX.md)
+- [docs/regulation/policy_to_evidence_spine.md](../regulation/policy_to_evidence_spine.md)

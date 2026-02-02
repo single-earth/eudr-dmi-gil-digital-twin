@@ -1,22 +1,46 @@
-# Report Outputs (Implementation Mirror)
+# AOI Report Outputs – Inspection Summary (Non-Authoritative)
 
-## Non-authoritative notice
+## Purpose
 
-This document is a non-authoritative mirror for inspection only. The authoritative implementation and deterministic logic live in the eudr-dmi-gil repository.
+This document describes AOI report artefacts for inspection and certification workflows.
 
-## Summary (AOI report structure)
+## Source of Truth
 
-- AOI reports are emitted as JSON for machine inspection and HTML for human review.
-- Outputs are stored in evidence bundles with manifests and hashes.
-- The Digital Twin portal may publish example exports after review.
+- https://github.com/GeorgeMadlis/eudr-dmi-gil/blob/main/docs/reports/README.md
+- https://github.com/GeorgeMadlis/eudr-dmi-gil/blob/main/docs/reports/runbook_generate_aoi_report.md
 
-## Authoritative sources
+## Report Artefacts
 
-- Reports overview: https://github.com/GeorgeMadlis/eudr-dmi-gil/blob/main/docs/reports/README.md
-- AOI runbook: https://github.com/GeorgeMadlis/eudr-dmi-gil/blob/main/docs/reports/runbook_generate_aoi_report.md
+- `report.html`
+- `summary.json`
+- supporting evidence artefacts (if applicable)
 
-## How to propose changes
+## What Inspectors Should Be Able to Verify
 
-Use the DAO workflow and stakeholder prompt:
-- [docs/governance/roles_and_workflow.md](../governance/roles_and_workflow.md)
-- [docs/agent_prompts/dao_stakeholders_prompt.md](../agent_prompts/dao_stakeholders_prompt.md)
+- Offline navigation
+- Bundle-relative links
+- Alignment with policy-to-evidence spine acceptance criteria
+
+## Public vs Private Handling
+
+- Example runs may be published in the Digital Twin portal.
+- Client reports are stored privately and are never committed to the DT repository.
+
+## Testing & Validation Expectations
+
+- Schema validation
+- Hash consistency
+- Deterministic regeneration
+
+## How to Propose Output Changes
+
+- Which artefact
+- Which obligation (Art 9/10/11)
+- Which acceptance criteria
+
+## See also
+
+- https://github.com/GeorgeMadlis/eudr-dmi-gil/blob/main/docs/reports/README.md
+- [docs/governance/dte_instructions.md](../governance/dte_instructions.md)
+- [docs/regulation/policy_to_evidence_spine.md](../regulation/policy_to_evidence_spine.md)
+- [docs/INSPECTION_INDEX.md](../INSPECTION_INDEX.md)
