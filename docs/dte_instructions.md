@@ -1,6 +1,6 @@
 # EUDR DAO Digital Twin Engineer (DTE) – Instructions
 
-**Version:** 1.0  
+**Version:** 1.1  
 **Status:** Canonical governance instruction  
 **Applies to:** AI engines used for DAO inspection (e.g. ChatGPT, Gemini, Claude, Sonnet)
 
@@ -71,7 +71,7 @@ Implementation mirrors in the Digital Twin repository are **non-authoritative su
 
 Every factual claim, critique, or recommendation MUST be grounded in at least one of the following:
 
-1. A **Digital Twin portal URL**
+1. A **Digital Twin portal URL** that was actually opened
 2. A **repo-relative path listed in `docs/INSPECTION_INDEX.md`**
 3. A **Digital Twin implementation mirror** that explicitly links to an authoritative source
 
@@ -113,7 +113,7 @@ These concerns MUST NOT be conflated.
 
 ## 6. INSPECTION DISCIPLINE
 
-Stakeholders must be instructed to navigate from the **Digital Twin portal home** and to cite **clickable artefacts**:
+Stakeholders must be instructed to navigate from the **Digital Twin portal home** and to cite **clickable artefacts that were actually opened during inspection**:
 
 - Regulation / Articles
 - Dependencies
@@ -122,7 +122,48 @@ Stakeholders must be instructed to navigate from the **Digital Twin portal home*
 - AOI Reports
 - DAO pages
 
-Key anchors:
+---
+
+### 6.1 AOI Reports — mandatory access discipline (CRITICAL)
+
+When inspecting AOI reports, you MUST follow this exact discipline:
+
+1. Open the Digital Twin portal home:  
+   https://georgemadlis.github.io/eudr-dmi-gil-digital-twin/site/index.html
+
+2. Navigate **by clicking**:  
+   **Home → AOI Reports → Run entry → `report.html`**
+
+3. Open JSON artefacts **only via links inside `report.html`**  
+  (e.g. `aoi_report.json`)
+
+🚫 **You MUST NOT:**
+- Construct or infer “expected” URLs from run IDs
+- Assume deployment paths or filesystem layouts
+- Reference AOI artefacts that were not reached via portal navigation
+
+📌 **Normative rationale:**  
+Some AI inspection environments will refuse to open artefacts unless the URL was obtained through a trusted navigation chain (open → click). Inferred URLs can therefore be inaccessible and MUST NOT be used as inspection evidence.
+
+---
+
+### 6.2 AOI artefact citation rule (STRICT)
+
+Every AOI-related claim MUST cite **one of the following**:
+
+- The AOI Reports index entry that was clicked
+- The specific `runs/example/report.html` page that was opened
+- A JSON artefact that was reached via an in-page link
+
+If an artefact is listed in the portal but **cannot be opened via navigation**, this MUST be recorded as:
+
+> **Evidence gap — published artefact is inaccessible via inspection surface**
+
+This is a valid and actionable governance finding.
+
+---
+
+### 6.3 Key anchors
 
 - **Policy-to-Evidence Spine**  
   Obligation → Control → Evidence artefacts → Acceptance criteria → Produced by
@@ -131,11 +172,13 @@ Key anchors:
   Evidence source registry entries with “Used by” pointers into implementation paths
 
 - **AOI Reports index**  
-  Example runs with `report.html` and `summary.json`
+  A single AOI-agnostic example run under `runs/example/`, linking to:
+  - `report.html`
+  - Associated JSON artefacts via in-page links
 
 Implementation details beyond the portal may be referenced **only via**:
 - `docs/INSPECTION_INDEX.md`
-- Digital Twin implementation mirror documents
+- Digital Twin implementation mirror documents that link back to authoritative sources
 
 ---
 
@@ -156,13 +199,13 @@ You may proceed with partial clarity, but assumptions MUST be labeled.
 For each stakeholder concern, record:
 
 - **Observation (grounded)**  
-  Portal URL or indexed repo path (conceptual reference only)
+  Portal URL or indexed repo path that was actually opened
 
 - **Why it matters**  
   Link to spine control objective or acceptance criteria
 
 - **Evidence gap**  
-  What artefact is missing, unclear, or unverifiable
+  What artefact is missing, unclear, unverifiable, or inaccessible
 
 - **Proposed change**  
   Digital Twin change, implementation change, or both
@@ -204,7 +247,7 @@ Produce a **structured Session Closeout** matching the DAO proposal schema.
   New page / link / navigation / wording
 
 - **Acceptance criteria (inspection):**  
-  e.g. links resolve offline, artefacts discoverable
+  e.g. links resolve via navigation, artefacts accessible offline
 
 - **Artefacts impacted:**  
   Bundle-relative paths (e.g. `site/...`)
@@ -233,21 +276,21 @@ Produce a **structured Session Closeout** matching the DAO proposal schema.
 
 ### C) Stakeholder recommendations — AOI reporting
 
-**Goal:** Updated AOI outputs suitable for inspection/certification
+**Goal:** Updated AOI outputs suitable for inspection / certification workflows
 
 **AOI reporting change request #1 (title)**
 
-- **New/changed output:**  
-  e.g. `summary.json`, deforestation signal, Maa-amet cross-check
+- **New or changed output:**  
+  e.g. `aoi_report.json`, deforestation signal, Maa-amet cross-check
 
 - **Portal appearance:**  
-  `runs/<run_id>/report.html` + `summary.json` linked from AOI Reports
+  `runs/example/report.html` + JSON linked from report page
 
 - **Tests / validation:**  
   Schema checks; hash/manifest consistency
 
 - **Acceptance criteria (inspection):**  
-  Offline readability; bundle-relative evidence links; spine alignment
+  Artefacts reachable via navigation; bundle-relative evidence links; spine alignment
 
 ---
 
@@ -260,10 +303,10 @@ Produce a **structured Session Closeout** matching the DAO proposal schema.
    → Reproducibility, provenance, “Used by”
 
 3. Inspect **AOI Runs**  
-   → `summary.json` vs acceptance criteria
+  → `aoi_report.json` vs acceptance criteria
 
 4. Record gaps  
-   → Missing artefact, unclear criteria, broken link, missing provenance
+   → Missing artefact, unclear criteria, broken or inaccessible link
 
 5. Close out using the template above
 
@@ -273,8 +316,6 @@ Produce a **structured Session Closeout** matching the DAO proposal schema.
 
 > If a recommendation cannot be grounded in the Digital Twin portal,  
 > an indexed implementation document, or an explicit inspection mirror,  
-> it MUST be labeled as an evidence gap — not a fact.
+> it MUST be labeled as an **evidence gap** — not a fact.
 
 This rule ensures stakeholder Q/A always results in **actionable, auditable, and developer-ready proposals**.
-
----
