@@ -47,7 +47,11 @@ if [[ ! -d "$runs_dir" ]]; then
   exit 1
 fi
 
-mapfile -t run_dirs < <(find "$runs_dir" -mindepth 1 -maxdepth 1 -type d -print)
+run_dirs=()
+while IFS= read -r d; do
+  [[ -z "$d" ]] && continue
+  run_dirs+=("$d")
+done < <(find "$runs_dir" -mindepth 1 -maxdepth 1 -type d -print)
 if (( ${#run_dirs[@]} != 1 )); then
   echo "ERROR: expected exactly one AOI run directory under $runs_dir" >&2
   for d in "${run_dirs[@]}"; do
