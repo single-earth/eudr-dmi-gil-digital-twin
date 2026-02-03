@@ -6,6 +6,7 @@ import re
 from pathlib import Path
 
 from site_nav import render_header_nav
+from render_dte_instructions import render_to_site
 
 
 HEADER_RE = re.compile(r"<header>.*?</header>", re.DOTALL)
@@ -39,6 +40,11 @@ def main() -> int:
     args = p.parse_args()
 
     site_root = Path(args.site_root)
+
+    render_to_site(
+        source_path=Path("docs/dte_instructions.md"),
+        site_root=site_root,
+    )
 
     rebuild_file(site_root / "index.html", rel_prefix="", active_label="Home")
     rebuild_file(site_root / "aoi_reports" / "index.html", rel_prefix="../", active_label="AOI Reports")
