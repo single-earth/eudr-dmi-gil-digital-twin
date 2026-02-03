@@ -39,7 +39,7 @@ if [[ ! -d "$SITE_ROOT" ]]; then
   exit 2
 fi
 
-python - "$SITE_ROOT" <<'PY'
+python3 - "$SITE_ROOT" <<'PY'
 from __future__ import annotations
 
 import sys
