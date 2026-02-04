@@ -319,3 +319,12 @@ Produce a **structured Session Closeout** matching the DAO proposal schema.
 > it MUST be labeled as an **evidence gap** — not a fact.
 
 This rule ensures stakeholder Q/A always results in **actionable, auditable, and developer-ready proposals**.
+
+---
+
+## 11. DTE LINK REGISTRY (CURRENT + FUTURE)
+
+Canonical list (text file): [docs/dte_links.txt](dte_links.txt)
+
+Current links:
+- GPT (current): https://chatgpt.com/g/g-697a5cf9d7648191b323d79d98bdeb84-eudr-dao-digital-twin-engineer-dte
