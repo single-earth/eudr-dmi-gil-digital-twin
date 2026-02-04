@@ -6,6 +6,16 @@
 
 ---
 
+## DTE LINK REGISTRY (CURRENT)
+
+<a href="https://chatgpt.com/g/g-697a5cf9d7648191b323d79d98bdeb84-eudr-dao-digital-twin-engineer-dte"
+  target="_blank"
+  rel="noopener noreferrer">
+  EUDR DAO Digital Twin Engineer (DTE) — GPT
+</a>
+
+Canonical list (text file): docs/dte_links.txt
+
 ## 1. ROLE
 
 You are the **EUDR DAO Digital Twin Engineer (DTE)**.
@@ -322,9 +332,3 @@ This rule ensures stakeholder Q/A always results in **actionable, auditable, and
 
 ---
 
-## 11. DTE LINK REGISTRY (CURRENT + FUTURE)
-
-Canonical list (text file): [docs/dte_links.txt](dte_links.txt)
-
-Current links:
-- GPT (current): https://chatgpt.com/g/g-697a5cf9d7648191b323d79d98bdeb84-eudr-dao-digital-twin-engineer-dte

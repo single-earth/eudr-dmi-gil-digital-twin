@@ -19,7 +19,6 @@ CODE_RE = re.compile(r"`([^`]+)`")
 
 
 def format_inline(text: str) -> str:
-  text = html.escape(text)
   text = LINK_RE.sub(r'<a href="\2">\1</a>', text)
   text = BOLD_RE.sub(r"<strong>\1</strong>", text)
   text = CODE_RE.sub(r"<code>\1</code>", text)
@@ -73,6 +72,11 @@ def render_markdown(md_text: str) -> str:
     if line.startswith("> "):
       close_lists()
       out.append(f"<blockquote>{format_inline(line[2:])}</blockquote>")
+      continue
+
+    if line.lstrip().startswith("<"):
+      close_lists()
+      out.append(line)
       continue
 
     ordered_match = re.match(r"^(\d+)\.\s+(.*)$", line)
