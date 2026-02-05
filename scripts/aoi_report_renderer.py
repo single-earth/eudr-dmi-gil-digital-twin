@@ -103,6 +103,9 @@ def render_report_html(report: dict[str, Any], run_dir: Path, html_relpath: str)
         acceptance_criteria = report_metadata.get("acceptance_criteria")
     results = report.get("results")
     regulatory_traceability = report.get("regulatory_traceability")
+    assumptions = report.get("assumptions")
+    if assumptions is None and isinstance(report_metadata, dict):
+        assumptions = report_metadata.get("assumptions")
 
     inputs = report.get("inputs", {}).get("sources", [])
     inputs_sorted = sorted(inputs, key=lambda item: str(item.get("source_id", "")))
@@ -359,6 +362,64 @@ def render_report_html(report: dict[str, Any], run_dir: Path, html_relpath: str)
             "</tr>"
         )
     lines.append("  </table>")
+
+    lines.append("  <h2>Assumptions & Limitations</h2>")
+    if not assumptions:
+        lines.append("  <p><strong>No assumptions declared in this report.</strong></p>")
+    else:
+        lines.append("  <table>")
+        lines.append("    <tr><th>Assumption</th><th>Testable</th><th>Affected results</th></tr>")
+        result_ids = {anchor_id("result", r.get("result_id")) for r in results or [] if isinstance(r, dict) and r.get("result_id") is not None}
+
+        def result_link_or_error(result_id: Any) -> str:
+            if result_id is None:
+                return "<strong>missing</strong>"
+            anchor = anchor_id("result", result_id)
+            if anchor in result_ids:
+                return f"<a href=\"#{html.escape(anchor)}\">{html.escape(str(result_id))}</a>"
+            return f"<strong>missing-link</strong> {html.escape(str(result_id))}"
+
+        if isinstance(assumptions, list):
+            for entry in assumptions:
+                if isinstance(entry, dict):
+                    text = entry.get("text") or entry.get("assumption") or entry.get("statement")
+                    testable = entry.get("testable")
+                    affected = entry.get("affected_results") or entry.get("results") or []
+                    assumption_text = json.dumps(text, sort_keys=True, ensure_ascii=False) if text is not None else json.dumps(entry, sort_keys=True, ensure_ascii=False)
+                    testable_text = "" if testable is None else str(testable)
+                    if testable is False:
+                        testable_text = f"{testable_text} (not testable)"
+                    if isinstance(affected, list):
+                        affected_links = ", ".join(result_link_or_error(rid) for rid in affected) if affected else "<strong>missing</strong>"
+                    else:
+                        affected_links = result_link_or_error(affected)
+                    lines.append(
+                        "    <tr>"
+                        f"<td><code>{html.escape(assumption_text)}</code></td>"
+                        f"<td>{html.escape(testable_text)}</td>"
+                        f"<td>{affected_links}</td>"
+                        "</tr>"
+                    )
+                else:
+                    value = json.dumps(entry, sort_keys=True, ensure_ascii=False)
+                    lines.append(
+                        "    <tr>"
+                        f"<td><code>{html.escape(value)}</code></td>"
+                        "<td></td>"
+                        "<td><strong>missing</strong></td>"
+                        "</tr>"
+                    )
+        else:
+            value = json.dumps(assumptions, sort_keys=True, ensure_ascii=False)
+            lines.append(
+                "    <tr>"
+                f"<td><code>{html.escape(value)}</code></td>"
+                "<td></td>"
+                "<td><strong>missing</strong></td>"
+                "</tr>"
+            )
+        lines.append("  </table>")
+    lines.append("  <div style=\"height:12px;\"></div>")
 
     lines.append("  <h2>Results</h2>")
     if not results:
