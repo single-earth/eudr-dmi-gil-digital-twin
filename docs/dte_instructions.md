@@ -140,7 +140,10 @@ When inspecting AOI reports, you MUST follow this exact discipline:
 2. Navigate **by clicking**:  
    **Home → AOI Reports → Run entry → `report.html`**
 
-3. Open JSON artefacts **only via links inside `report.html`**  
+3. Open the declared AOI HTML report **via the link inside `report.html`**  
+  (e.g. `reports/aoi_report_v1/<aoi_id>.html`)
+
+4. Open JSON artefacts **only via links inside `report.html`**  
   (e.g. `aoi_report.json`)
 
 🚫 **You MUST NOT:**
@@ -181,6 +184,13 @@ This is a valid and actionable governance finding.
   A single AOI-agnostic example run under `runs/example/`, linking to:
   - `report.html`
   - Associated JSON artefacts via in-page links
+
+### 6.4 Artefact publication contract (DT)
+
+- `aoi_report.json` is the source of truth for declared artefacts.
+- Every declared artefact must exist at its declared relative path in the published bundle.
+- `report.html` must link to the declared HTML report artefact.
+- Builds fail if any declared artefact is missing or unlinked.
 
 Implementation details beyond the portal may be referenced **only via**:
 - `docs/INSPECTION_INDEX.md`

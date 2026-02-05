@@ -47,6 +47,15 @@ git checkout -B "$branch"
 mkdir -p docs/site/aoi_reports
 rsync -a --delete "$STAGING_DIR/" docs/site/aoi_reports/
 
+# Render deterministic AOI artefacts from aoi_report.json and refresh hashes.
+if [[ -d "docs/site/aoi_reports/runs" ]]; then
+  while IFS= read -r -d '' run_dir; do
+    if [[ -f "${run_dir}/aoi_report.json" ]]; then
+      python3 scripts/render_aoi_report_from_json.py --run-dir "${run_dir}" --update-json
+    fi
+  done < <(find "docs/site/aoi_reports/runs" -mindepth 1 -maxdepth 1 -type d -print0)
+fi
+
 # Enforce publish scope
 scripts/assert_publish_scope.sh
 

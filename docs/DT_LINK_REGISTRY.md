@@ -23,6 +23,9 @@ These links belong to the **non-authoritative inspection surface**.
 - Example AOI report (HTML):
   https://georgemadlis.github.io/eudr-dmi-gil-digital-twin/site/aoi_reports/runs/example/report.html
 
+- Example AOI artefact (HTML report):
+  https://georgemadlis.github.io/eudr-dmi-gil-digital-twin/site/aoi_reports/runs/example/reports/aoi_report_v1/estonia_testland1.html
+
 - Example AOI report (JSON):
   https://georgemadlis.github.io/eudr-dmi-gil-digital-twin/site/aoi_reports/runs/example/aoi_report.json
 

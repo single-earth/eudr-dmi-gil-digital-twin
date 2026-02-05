@@ -89,3 +89,6 @@ if ! grep -q "runs/example/report.html" "$index_path"; then
   echo "ERROR: AOI index does not link to runs/example/report.html" >&2
   exit 1
 fi
+
+# Validate declared AOI artefacts exist and are linked from report.html.
+python3 scripts/validate_aoi_run_artifacts.py --runs-dir "$runs_dir"

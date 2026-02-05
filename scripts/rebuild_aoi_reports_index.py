@@ -69,6 +69,7 @@ def build_page(*, runs_dir: Path) -> str:
         <!-- Generated from docs/site/aoi_reports/runs/ -->
 <h1>AOI Reports</h1>
 <p class=\"muted\">Portable mode: links point into the bundle under <code>runs/&lt;run_id&gt;/report.html</code>. For inspection guidance, see <a href=\"../dte_instructions.html\">DTE instructions</a>.</p>
+<p class=\"muted\"><strong>Artefact publication contract:</strong> <code>aoi_report.json</code> declares every evidence artefact; each declared file must exist at its declared relative path in the bundle and be reachable via a clickable link from <code>report.html</code>. Builds fail on missing artefacts.</p>
 <p class=\"muted\">AI/automation inspection note: see <a href=\"../dte_instructions.html\">DTE instructions</a>.</p>
 <p class=\"muted\">This page shows a single AOI-agnostic example report. It is overwritten on each publish; older versions remain available via git history but are not exposed in the portal.</p>
 <div class=\"notice\" style=\"border:1px solid #ddd; padding:12px; border-radius:8px; margin:12px 0;\">

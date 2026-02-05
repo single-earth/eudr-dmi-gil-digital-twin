@@ -28,7 +28,14 @@ A portable offline bundle can be inspected by downloading the site bundle and op
 
 ## AOI Reports publishing policy
 
-Only the 2 most recent AOI report runs are published in this DT portal. Older AOI reports are retained on the server in the authoritative environment and are not published here.
+Only a single AOI-agnostic example run is published in this DT portal. Older AOI reports are retained on the server in the authoritative environment and are not published here.
+
+### Artefact publication contract (DT)
+
+- `aoi_report.json` is the source of truth for declared artefacts.
+- Every declared artefact must exist at its declared relative path in the published bundle.
+- `report.html` must link to the declared HTML report artefact.
+- Builds fail if any declared artefact is missing or unlinked.
 
 ### Delete-before-publish invariant
 
@@ -49,6 +56,16 @@ scripts/check_links_local.sh
 ```
 
 This verifies that docs/site/index.html and docs/site/aoi_reports/index.html resolve local file links for both GitHub Pages and file:// usage.
+
+### AOI artefact validation and tests
+
+From the repo root:
+
+```sh
+python3 scripts/validate_aoi_run_artifacts.py
+python3 scripts/test_aoi_report_renderer.py
+python3 scripts/test_aoi_report_integration.py
+```
 
 ## Definitions
 

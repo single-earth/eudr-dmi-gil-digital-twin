@@ -9,23 +9,23 @@
   "evidence_artifacts": [
     {
       "relpath": "inputs/aoi.geojson",
-      "sha256": "f57dc8c1708c6f3bcbb8a5b4b571ad8c3c70935b8a27738d2c473d06f39a1a9c",
-      "size_bytes": 356
+      "sha256": "22ad6fe53d54f93b3d2f5894c9722b944ebd005734435308c2f14020e76bc28b",
+      "size_bytes": 355
     },
     {
       "relpath": "reports/aoi_report_v1/estonia_testland1.html",
-      "sha256": "762b2c016ca4da8f03e1c7b06675729b6dc5f146e2f173e3ec14bd7203b6bc9f",
-      "size_bytes": 1994
+      "sha256": "e90bdd2b49de8599d3a9d540aaf495e0986767505cdbdba2ab030227e0780190",
+      "size_bytes": 1768
     },
     {
       "relpath": "reports/aoi_report_v1/estonia_testland1.json",
-      "sha256": "21325cc9864d081edc50dd42f96f47ac901c956458fb4b79ea9dfc514211a4be",
-      "size_bytes": 2002
+      "sha256": "751a4ccc02e80ab756f4927861c05dae75e059d0af36232a4c5d370ea321605b",
+      "size_bytes": 929
     },
     {
       "relpath": "reports/aoi_report_v1/estonia_testland1/metrics.csv",
-      "sha256": "9ce6c972cbc7c76751505a65db44bfd1c159bfb93719aeaabbe2869a6055157b",
-      "size_bytes": 130
+      "sha256": "ab3aaeed893675ff3722a2489561f76aeca6c7785274d184251449a6ff8480b5",
+      "size_bytes": 133
     }
   ],
   "extensions": {

@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AOI Report Summary — estonia_testland1</title>
+  <style>
+    body { font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial; margin: 24px; }
+    table { border-collapse: collapse; width: 100%; }
+    th, td { border: 1px solid #ddd; padding: 8px; vertical-align: top; }
+    th { background: #f6f6f6; text-align: left; width: 240px; }
+    h2 { margin-top: 28px; }
+    code { background: #f6f6f6; padding: 1px 4px; border-radius: 4px; }
+  </style>
+</head>
+<body>
+  <h1>AOI Report Summary</h1>
+  <table>
+    <tr><th>AOI</th><td>estonia_testland1</td></tr>
+    <tr><th>Bundle</th><td>estonia_testland1_example</td></tr>
+    <tr><th>Report Version</th><td>aoi_report_v1</td></tr>
+    <tr><th>Geometry Ref</th><td>geojson: inputs/aoi.geojson</td></tr>
+  </table>
+  <h2>Inputs</h2>
+  <table>
+    <tr><th>Source</th><th>URI</th><th>SHA256</th><th>Content Type</th></tr>
+    <tr><td>aoi_geometry</td><td>inputs/aoi.geojson</td><td><code>22ad6fe53d54f93b3d2f5894c9722b944ebd005734435308c2f14020e76bc28b</code></td><td>application/geo+json</td></tr>
+  </table>
+  <h2>Metrics</h2>
+  <table>
+    <tr><th>Metric</th><th>Value</th><th>Unit</th><th>Notes</th><th>Source</th></tr>
+    <tr><td>area_ha</td><td>12.34</td><td>ha</td><td>deterministic</td><td>example</td></tr>
+    <tr><td>forest_cover_fraction</td><td>0.56</td><td>fraction</td><td>deterministic</td><td>example</td></tr>
+  </table>
+  <h2>Evidence Artifacts</h2>
+  <ul>
+    <li><a href="../../inputs/aoi.geojson">inputs/aoi.geojson</a></li>
+    <li><a href="estonia_testland1.html">reports/aoi_report_v1/estonia_testland1.html</a></li>
+    <li><a href="estonia_testland1.json">reports/aoi_report_v1/estonia_testland1.json</a></li>
+    <li><a href="estonia_testland1/metrics.csv">reports/aoi_report_v1/estonia_testland1/metrics.csv</a></li>
+  </ul>
+</body>
+</html>
