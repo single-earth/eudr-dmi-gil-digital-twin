@@ -94,6 +94,7 @@ def render_report_html(report: dict[str, Any], run_dir: Path, html_relpath: str)
     bundle_id = str(report.get("bundle_id", ""))
     report_version = str(report.get("report_version", ""))
     geometry_ref = report.get("aoi_geometry_ref", {})
+    report_metadata = report.get("report_metadata")
 
     inputs = report.get("inputs", {}).get("sources", [])
     inputs_sorted = sorted(inputs, key=lambda item: str(item.get("source_id", "")))
@@ -118,6 +119,35 @@ def render_report_html(report: dict[str, Any], run_dir: Path, html_relpath: str)
     lines.append("  </style>")
     lines.append("</head>")
     lines.append("<body>")
+    if not report_metadata:
+        lines.append(
+            "  <div style=\"border:2px solid #b00020; background:#fff5f5; padding:12px; margin-bottom:16px;\">"
+            "<strong>INVALID FOR INSPECTION:</strong> report_metadata is missing."
+            "</div>"
+        )
+    else:
+        lines.append("  <h2>Report Intent & Scope</h2>")
+        lines.append("  <table>")
+        lines.append("    <tr><th>Field</th><th>Value</th></tr>")
+        if isinstance(report_metadata, dict):
+            for key in sorted(report_metadata.keys()):
+                value = json.dumps(report_metadata[key], sort_keys=True, ensure_ascii=False)
+                lines.append(
+                    "    <tr>"
+                    f"<td>{html.escape(str(key))}</td>"
+                    f"<td><code>{html.escape(value)}</code></td>"
+                    "</tr>"
+                )
+        else:
+            value = json.dumps(report_metadata, sort_keys=True, ensure_ascii=False)
+            lines.append(
+                "    <tr>"
+                "<td>value</td>"
+                f"<td><code>{html.escape(value)}</code></td>"
+                "</tr>"
+            )
+        lines.append("  </table>")
+        lines.append("  <div style=\"height:12px;\"></div>")
     lines.append("  <h1>AOI Report Summary</h1>")
     lines.append("  <table>")
     lines.append(f"    <tr><th>AOI</th><td>{html.escape(aoi_id)}</td></tr>")
