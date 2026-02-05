@@ -1,4 +1,14 @@
 {
+  "acceptance_criteria": [
+    {
+      "criteria_id": "aoi_geometry_present",
+      "decision_type": "presence",
+      "description": "AOI geometry is present and referenced in inputs.",
+      "evidence_classes": [
+        "aoi_geometry"
+      ]
+    }
+  ],
   "aoi_geometry_ref": {
     "kind": "geojson",
     "sha256": "22ad6fe53d54f93b3d2f5894c9722b944ebd005734435308c2f14020e76bc28b",
@@ -9,25 +19,34 @@
   "evidence_artifacts": [
     {
       "relpath": "inputs/aoi.geojson",
-      "sha256": "f57dc8c1708c6f3bcbb8a5b4b571ad8c3c70935b8a27738d2c473d06f39a1a9c",
-      "size_bytes": 356
+      "sha256": "22ad6fe53d54f93b3d2f5894c9722b944ebd005734435308c2f14020e76bc28b",
+      "size_bytes": 355
     },
     {
       "relpath": "reports/aoi_report_v1/estonia_testland1.html",
-      "sha256": "7b5cb2c9616a287893d9996d9e8ba36505906a6308f6de07b5762670d5bc8136",
-      "size_bytes": 2541
+      "sha256": "e12f8a9f7036ee486d58727623b8b95dceba03f5b13ac0a11c4916fead41d806",
+      "size_bytes": 1768
     },
     {
       "relpath": "reports/aoi_report_v1/estonia_testland1.json",
-      "sha256": "4571c82fd74d013f0989108fcefb8136d4d0adeb6734e1aa18674196a1bf305e",
-      "size_bytes": 2003
+      "sha256": "89779f77d9b98492fa0f556d8ff1c6c45aaed4f744efbb51d850b27b83bd691b",
+      "size_bytes": 1689
     },
     {
       "relpath": "reports/aoi_report_v1/estonia_testland1/metrics.csv",
-      "sha256": "9ce6c972cbc7c76751505a65db44bfd1c159bfb93719aeaabbe2869a6055157b",
-      "size_bytes": 130
+      "sha256": "ab3aaeed893675ff3722a2489561f76aeca6c7785274d184251449a6ff8480b5",
+      "size_bytes": 133
     }
   ],
+  "evidence_registry": {
+    "evidence_classes": [
+      {
+        "class_id": "aoi_geometry",
+        "mandatory": true,
+        "status": "present"
+      }
+    ]
+  },
   "extensions": {
     "metrics_rows_v1": [
       {
@@ -46,7 +65,7 @@
       }
     ]
   },
-  "generated_at_utc": "2026-02-03T19:42:17+00:00",
+  "generated_at_utc": "2026-02-05T14:30:44+00:00",
   "inputs": {
     "sources": [
       {
@@ -70,5 +89,32 @@
     }
   },
   "policy_mapping_refs": [],
-  "report_version": "aoi_report_v1"
+  "regulatory_traceability": [
+    {
+      "acceptance_criteria": "aoi_geometry_present",
+      "article_ref": "article-3",
+      "evidence_class": "aoi_geometry",
+      "regulation": "EUDR",
+      "result_ref": "result-001"
+    }
+  ],
+  "report_metadata": {
+    "assessment_capability": "inspectable_only",
+    "regulatory_context": {
+      "in_scope_articles": [],
+      "out_of_scope_articles": [],
+      "regulation": "EUDR"
+    },
+    "report_type": "example"
+  },
+  "report_version": "aoi_report_v1",
+  "results": [
+    {
+      "criteria_ids": [
+        "aoi_geometry_present"
+      ],
+      "result_id": "result-001",
+      "status": "placeholder"
+    }
+  ]
 }
