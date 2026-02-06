@@ -84,6 +84,19 @@
   </ul>
 </div>
 <div class="card">
+  <h2>External data plane (operator-controlled, not committed)</h2>
+  <ul>
+    <li>Large datasets like Hansen GeoTIFF tiles are stored under <code>/Users/server/data/eudr-dmi</code> (or <code>EUDR_DMI_DATA_ROOT</code> override) on the operator server.</li>
+    <li>DT only publishes inspectable example reports + dependency link registries; it does not host tiles.</li>
+  </ul>
+  <h3>Authoritative acquisition paths (eudr-dmi-gil)</h3>
+  <ul>
+    <li><a href="https://github.com/GeorgeMadlis/eudr-dmi-gil/blob/main/src/eudr_dmi_gil/deps/hansen_acquire.py">https://github.com/GeorgeMadlis/eudr-dmi-gil/blob/main/src/eudr_dmi_gil/deps/hansen_acquire.py</a></li>
+    <li><a href="https://github.com/GeorgeMadlis/eudr-dmi-gil/blob/main/scripts/ensure_hansen_for_aoi.py">https://github.com/GeorgeMadlis/eudr-dmi-gil/blob/main/scripts/ensure_hansen_for_aoi.py</a></li>
+    <li><a href="https://github.com/GeorgeMadlis/eudr-dmi-gil/blob/main/scripts/run_example_report_clean.sh">https://github.com/GeorgeMadlis/eudr-dmi-gil/blob/main/scripts/run_example_report_clean.sh</a></li>
+  </ul>
+</div>
+<div class="card">
   <h2>Hansen GFC 2024 v1.12 – definitions/download page</h2>
 <p class="muted">Authoritative dataset definitions/semantics used to interpret Hansen GFC layers (loss, cover, etc.) in EUDR-oriented checks and definition-comparison controls.</p>
   <ul>
@@ -91,6 +104,12 @@
     <li><b>URL</b>: <a href="https://storage.googleapis.com/earthenginepartners-hansen/GFC-2024-v1.12/download.html">https://storage.googleapis.com/earthenginepartners-hansen/GFC-2024-v1.12/download.html</a></li>
     <li><b>Expected content type</b>: <code>text/html</code></li>
     <li><b>Server audit path</b>: <code>/Users/server/audit/eudr_dmi/dependencies/hansen_gfc_definitions</code></li>
+  </ul>
+  <h3>Hansen acquisition workflow (authoritative generation in eudr-dmi-gil)</h3>
+  <ul>
+    <li>Step 1: <code>ensure_hansen_for_aoi.py</code> (downloads/caches tiles; writes manifest)</li>
+    <li>Step 2: <code>run_example_report_clean.sh</code> (generates report)</li>
+    <li>Step 3: <code>publish_aoi_run_from_staging.sh</code> in this DT repo (publishes example artifacts)</li>
   </ul>
   <h3>Authority boundary</h3>
   <ul>
