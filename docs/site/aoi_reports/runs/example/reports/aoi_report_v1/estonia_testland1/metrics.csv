@@ -1,6 +1,4 @@
 variable,value,unit,notes,source
-area_ha,12.34,ha,deterministic,example
-forest_cover_fraction,0.56,fraction,deterministic,example
 pixel_current_tree_cover_ha,0.0,ha,pixel_mask,hansen_gfc
 pixel_forest_loss_post_2020_ha,0.0,ha,pixel_mask,hansen_gfc
 pixel_initial_tree_cover_ha,0.0,ha,pixel_mask,hansen_gfc

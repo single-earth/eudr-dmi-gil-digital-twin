@@ -41,26 +41,10 @@
     <div class="wrap">
       <h1>AOI Reports</h1>
       <p class="muted">Portable bundle. Links assume this folder is mounted at <code>docs/site/aoi_reports/</code>.</p>
-      <p><a href="#how-generated">How the example AOI report is generated (authoritative)</a></p>
       <div class="card">
         <h2>Runs</h2>
         <ul>
           <li><a href="runs/example/report.html">example</a> <span class="muted">(</span><a href="runs/example/aoi_report.json">aoi_report.json</a><span class="muted">)</span></li>
-        </ul>
-        <p class="muted">These are overwritten when the example run is regenerated in eudr-dmi-gil and republished.</p>
-      </div>
-      <div class="card" id="how-generated">
-        <h2>How the example AOI report is generated (authoritative)</h2>
-        <p><b>Authority boundary</b>: Report generation happens in eudr-dmi-gil; this DT repo only publishes inspection bundles.</p>
-        <p>Authoritative README: <a href="https://github.com/GeorgeMadlis/eudr-dmi-gil/blob/main/README.md">https://github.com/GeorgeMadlis/eudr-dmi-gil/blob/main/README.md</a></p>
-        <h3>Run in eudr-dmi-gil repo</h3>
-        <pre><code>scripts/run_example_report_clean.sh
-AOI_GEOJSON="/abs/path/to/custom.geojson" scripts/run_example_report_clean.sh</code></pre>
-        <h3>Publish to DT (this repo)</h3>
-        <ul>
-          <li><code>RUN_ID=example</code></li>
-          <li><code>STAGING_DIR=out/site_bundle/aoi_reports</code></li>
-          <li>Invoke this repo’s <code>scripts/publish_aoi_run_from_staging.sh</code>; it rsyncs, validates scope, commits, and prints a push command.</li>
         </ul>
       </div>
     </div>
