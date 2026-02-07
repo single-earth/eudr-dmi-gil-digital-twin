@@ -1,0 +1,24 @@
+{
+  "areas_ha": {
+    "forest_end_year": 0.0,
+    "loss_2021_2024": 0.0,
+    "loss_total_2001_2024": 0.0,
+    "rfm": 0.0
+  },
+  "mask_true_pixels": {
+    "forest_end_year": 0,
+    "loss_21_24": 0,
+    "rfm": 0
+  },
+  "pixel_area_m2": {
+    "max": 0.0,
+    "mean": 0.0,
+    "min": 0.0
+  },
+  "raster_shapes": [
+    [
+      1,
+      1
+    ]
+  ]
+}

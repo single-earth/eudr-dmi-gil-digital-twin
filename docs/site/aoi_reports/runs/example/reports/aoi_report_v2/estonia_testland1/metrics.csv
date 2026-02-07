@@ -1,4 +1,6 @@
 variable,value,unit,notes,source
+aoi_area_ha,15775.219873859023,ha,geodesic_wgs84_pyproj,geometry
+forest_loss_post_2020_percent_of_aoi,0.0,percent,forest_loss_post_2020_ha / aoi_area_ha,hansen_gfc
 pixel_current_tree_cover_ha,0.0,ha,pixel_mask,hansen_gfc
 pixel_forest_loss_post_2020_ha,0.0,ha,pixel_mask,hansen_gfc
 pixel_initial_tree_cover_ha,0.0,ha,pixel_mask,hansen_gfc
