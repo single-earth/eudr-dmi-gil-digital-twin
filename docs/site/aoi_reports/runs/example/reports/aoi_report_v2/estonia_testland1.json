@@ -23,14 +23,14 @@
     {
       "dataset_id": "aoi_geometry_input",
       "license": "user_supplied",
-      "retrieved_at_utc": "2026-02-10T11:13:03+00:00",
+      "retrieved_at_utc": "2026-02-10T11:42:38+00:00",
       "source_url": "inputs/aoi.geojson",
       "version": "user_supplied"
     },
     {
       "dataset_id": "hansen_gfc_2024_v1_12",
       "license": "Hansen GFC (public)",
-      "retrieved_at_utc": "2026-02-10T11:13:03+00:00",
+      "retrieved_at_utc": "2026-02-10T11:42:38+00:00",
       "source_url": "https://storage.googleapis.com/earthenginepartners-hansen/GFC-2024-v1.12/",
       "version": "2024-v1.12"
     }
@@ -51,7 +51,7 @@
         "role": "report_html"
       },
       "relpath": "reports/aoi_report_v2/estonia_testland1.html",
-      "sha256": "c225892b317b81fa1c927172da67c009b77ecfd956a8d5a51549fd3dea92f5e9",
+      "sha256": "d7a4edc09851fb9da0b3062f3bce95bbabb67502c7464874ad75c4a4c0040741",
       "size_bytes": 9050
     },
     {
@@ -60,7 +60,7 @@
         "role": "report_json"
       },
       "relpath": "reports/aoi_report_v2/estonia_testland1.json",
-      "sha256": "d603fa152ac1cef5be0596dcdf85c86925baddef1f9150e13205c77b13a92448",
+      "sha256": "a3eb0ad576cde0d722c31f2ea34d22210a0c7bbddced854f025053c3fb6e8c5f",
       "size_bytes": 6358
     },
     {
@@ -114,7 +114,7 @@
         "role": "hansen_tiles_manifest"
       },
       "relpath": "reports/aoi_report_v2/estonia_testland1/hansen/forest_loss_post_2020_tiles.json",
-      "sha256": "10a35eefb7fcb8aad66d7227535ef89db1bb277d494ab31ff1a613ebf7987324",
+      "sha256": "63329a11d53b790c57494e969a7d8de3174f310b7f9df845ad7432361ca517d6",
       "size_bytes": 1154
     },
     {
@@ -198,7 +198,7 @@
       "tile_source": "local",
       "tiles_manifest": {
         "relpath": "reports/aoi_report_v2/estonia_testland1/hansen/forest_loss_post_2020_tiles.json",
-        "sha256": "10a35eefb7fcb8aad66d7227535ef89db1bb277d494ab31ff1a613ebf7987324"
+        "sha256": "63329a11d53b790c57494e969a7d8de3174f310b7f9df845ad7432361ca517d6"
       },
       "tiles_used": [
         {
@@ -220,7 +220,7 @@
       ]
     }
   ],
-  "generated_at_utc": "2026-02-10T11:13:03+00:00",
+  "generated_at_utc": "2026-02-10T11:42:38+00:00",
   "inputs": {
     "sources": [
       {
