@@ -23,14 +23,14 @@
     {
       "dataset_id": "aoi_geometry_input",
       "license": "user_supplied",
-      "retrieved_at_utc": "2026-02-10T11:13:03+00:00",
+      "retrieved_at_utc": "2026-02-10T11:29:11+00:00",
       "source_url": "inputs/aoi.geojson",
       "version": "user_supplied"
     },
     {
       "dataset_id": "hansen_gfc_2024_v1_12",
       "license": "Hansen GFC (public)",
-      "retrieved_at_utc": "2026-02-10T11:13:03+00:00",
+      "retrieved_at_utc": "2026-02-10T11:29:11+00:00",
       "source_url": "https://storage.googleapis.com/earthenginepartners-hansen/GFC-2024-v1.12/",
       "version": "2024-v1.12"
     }
@@ -51,8 +51,8 @@
         "role": "report_html"
       },
       "relpath": "reports/aoi_report_v2/estonia_testland1.html",
-      "sha256": "c352615a3e9bf98b92c7ac63f05cb5d11d012674982b336caf164a50fd4cd1cf",
-      "size_bytes": 6025
+      "sha256": "d16f41c76f93660140d44b185c63fa24a84db8f2148bb7fa9fafe9af5cc973aa",
+      "size_bytes": 8484
     },
     {
       "content_type": "application/json",
@@ -60,7 +60,7 @@
         "role": "report_json"
       },
       "relpath": "reports/aoi_report_v2/estonia_testland1.json",
-      "sha256": "76eb2b4c1c01a8449c389f3e1e705c64e7912cfe70fe2f4a7e2557f7c7c3cf95",
+      "sha256": "6237fb123ccd86078677c1ded3fa6042a72fc026b002ebd223cec88e55ace727",
       "size_bytes": 12563
     },
     {
@@ -114,7 +114,7 @@
         "role": "hansen_tiles_manifest"
       },
       "relpath": "reports/aoi_report_v2/estonia_testland1/hansen/forest_loss_post_2020_tiles.json",
-      "sha256": "10a35eefb7fcb8aad66d7227535ef89db1bb277d494ab31ff1a613ebf7987324",
+      "sha256": "a080ae8edbb3aba6081814439bf8dde2dc5792210b15d425d6f5f39bf3d63f3e",
       "size_bytes": 1154
     },
     {
@@ -198,7 +198,7 @@
       "tile_source": "local",
       "tiles_manifest": {
         "relpath": "reports/aoi_report_v2/estonia_testland1/hansen/forest_loss_post_2020_tiles.json",
-        "sha256": "10a35eefb7fcb8aad66d7227535ef89db1bb277d494ab31ff1a613ebf7987324"
+        "sha256": "a080ae8edbb3aba6081814439bf8dde2dc5792210b15d425d6f5f39bf3d63f3e"
       },
       "tiles_used": [
         {
@@ -220,7 +220,7 @@
       ]
     }
   ],
-  "generated_at_utc": "2026-02-10T11:13:03+00:00",
+  "generated_at_utc": "2026-02-10T11:29:11+00:00",
   "inputs": {
     "sources": [
       {

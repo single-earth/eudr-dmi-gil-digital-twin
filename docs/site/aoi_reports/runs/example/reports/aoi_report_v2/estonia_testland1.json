@@ -23,14 +23,14 @@
     {
       "dataset_id": "aoi_geometry_input",
       "license": "user_supplied",
-      "retrieved_at_utc": "2026-02-10T11:13:03+00:00",
+      "retrieved_at_utc": "2026-02-10T11:29:11+00:00",
       "source_url": "inputs/aoi.geojson",
       "version": "user_supplied"
     },
     {
       "dataset_id": "hansen_gfc_2024_v1_12",
       "license": "Hansen GFC (public)",
-      "retrieved_at_utc": "2026-02-10T11:13:03+00:00",
+      "retrieved_at_utc": "2026-02-10T11:29:11+00:00",
       "source_url": "https://storage.googleapis.com/earthenginepartners-hansen/GFC-2024-v1.12/",
       "version": "2024-v1.12"
     }
@@ -51,7 +51,7 @@
         "role": "report_html"
       },
       "relpath": "reports/aoi_report_v2/estonia_testland1.html",
-      "sha256": "c225892b317b81fa1c927172da67c009b77ecfd956a8d5a51549fd3dea92f5e9",
+      "sha256": "8698635d7a5902ec6f206530eba88eac6b994214f7f3b85dcc01e6cd67445e63",
       "size_bytes": 9050
     },
     {
@@ -60,7 +60,7 @@
         "role": "report_json"
       },
       "relpath": "reports/aoi_report_v2/estonia_testland1.json",
-      "sha256": "d603fa152ac1cef5be0596dcdf85c86925baddef1f9150e13205c77b13a92448",
+      "sha256": "9b6fb7d41cd9dbc257de04dc82af1664cc83f78c815b0023ee0378fdb57f77ff",
       "size_bytes": 6358
     },
     {
@@ -114,7 +114,7 @@
         "role": "hansen_tiles_manifest"
       },
       "relpath": "reports/aoi_report_v2/estonia_testland1/hansen/forest_loss_post_2020_tiles.json",
-      "sha256": "10a35eefb7fcb8aad66d7227535ef89db1bb277d494ab31ff1a613ebf7987324",
+      "sha256": "a080ae8edbb3aba6081814439bf8dde2dc5792210b15d425d6f5f39bf3d63f3e",
       "size_bytes": 1154
     },
     {
@@ -198,7 +198,7 @@
       "tile_source": "local",
       "tiles_manifest": {
         "relpath": "reports/aoi_report_v2/estonia_testland1/hansen/forest_loss_post_2020_tiles.json",
-        "sha256": "10a35eefb7fcb8aad66d7227535ef89db1bb277d494ab31ff1a613ebf7987324"
+        "sha256": "a080ae8edbb3aba6081814439bf8dde2dc5792210b15d425d6f5f39bf3d63f3e"
       },
       "tiles_used": [
         {
@@ -220,7 +220,7 @@
       ]
     }
   ],
-  "generated_at_utc": "2026-02-10T11:13:03+00:00",
+  "generated_at_utc": "2026-02-10T11:29:11+00:00",
   "inputs": {
     "sources": [
       {
