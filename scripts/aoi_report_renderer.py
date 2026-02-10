@@ -98,6 +98,13 @@ def render_report_html(report: dict[str, Any], run_dir: Path, html_relpath: str)
     evidence_registry = report.get("evidence_registry")
     if evidence_registry is None and isinstance(report_metadata, dict):
         evidence_registry = report_metadata.get("evidence_registry")
+    evidence_classes_list: list[dict[str, Any]] = []
+    if isinstance(evidence_registry, dict):
+        evidence_classes_list = [
+            entry for entry in evidence_registry.get("evidence_classes", []) if isinstance(entry, dict)
+        ]
+    elif isinstance(evidence_registry, list):
+        evidence_classes_list = [entry for entry in evidence_registry if isinstance(entry, dict)]
     acceptance_criteria = report.get("acceptance_criteria")
     if acceptance_criteria is None and isinstance(report_metadata, dict):
         acceptance_criteria = report_metadata.get("acceptance_criteria")
@@ -193,8 +200,18 @@ def render_report_html(report: dict[str, Any], run_dir: Path, html_relpath: str)
         else:
             lines.append("  <table>")
             lines.append("    <tr><th>Regulation</th><th>Article</th><th>Evidence class</th><th>Acceptance criteria</th><th>Result ref</th></tr>")
-            evidence_ids = {anchor_id("evidence", e.get("class") or e.get("evidence_class") or e.get("id")) for e in evidence_registry or [] if isinstance(e, dict)}
-            criteria_ids = {anchor_id("criteria", c.get("id") or c.get("name") or c.get("criteria")) for c in acceptance_criteria or [] if isinstance(c, dict)}
+            evidence_ids = {
+                anchor_id("evidence", e.get("class_id") or e.get("class") or e.get("evidence_class") or e.get("id"))
+                for e in evidence_classes_list
+            }
+            criteria_ids = {
+                anchor_id(
+                    "criteria",
+                    c.get("criteria_id") or c.get("id") or c.get("name") or c.get("criteria"),
+                )
+                for c in acceptance_criteria or []
+                if isinstance(c, dict)
+            }
             result_ids = {anchor_id("result", r.get("result_id")) for r in results or [] if isinstance(r, dict) and r.get("result_id") is not None}
 
             def link_or_error(prefix: str, value: Any, declared_ids: set[str]) -> str:
@@ -249,8 +266,8 @@ def render_report_html(report: dict[str, Any], run_dir: Path, html_relpath: str)
     else:
         lines.append("  <table>")
         lines.append("    <tr><th>Evidence Class</th><th>Mandatory</th><th>Status</th></tr>")
-        if isinstance(evidence_registry, list):
-            for entry in evidence_registry:
+        if evidence_classes_list:
+            for entry in evidence_classes_list:
                 if not isinstance(entry, dict):
                     value = json.dumps(entry, sort_keys=True, ensure_ascii=False)
                     lines.append(
@@ -261,7 +278,7 @@ def render_report_html(report: dict[str, Any], run_dir: Path, html_relpath: str)
                         "</tr>"
                     )
                     continue
-                evidence_class = entry.get("class") or entry.get("evidence_class") or entry.get("id")
+                evidence_class = entry.get("class_id") or entry.get("class") or entry.get("evidence_class") or entry.get("id")
                 mandatory = entry.get("mandatory")
                 status = entry.get("status")
                 status_text = "" if status is None else str(status)
@@ -306,7 +323,7 @@ def render_report_html(report: dict[str, Any], run_dir: Path, html_relpath: str)
                         "</tr>"
                     )
                     continue
-                criteria_id = entry.get("id") or entry.get("name") or entry.get("criteria")
+                criteria_id = entry.get("criteria_id") or entry.get("id") or entry.get("name") or entry.get("criteria")
                 status = entry.get("status")
                 status_text = "" if status is None else str(status)
                 details_value = json.dumps(entry, sort_keys=True, ensure_ascii=False)
@@ -373,6 +390,94 @@ def render_report_html(report: dict[str, Any], run_dir: Path, html_relpath: str)
             "</tr>"
         )
     lines.append("  </table>")
+
+    validation = report.get("validation", {}) if isinstance(report.get("validation"), dict) else {}
+    maaamet_validation = validation.get("maaamet", {}) if isinstance(validation.get("maaamet"), dict) else {}
+    if maaamet_validation:
+        lines.append("  <h2>Maa-amet parcels</h2>")
+        lines.append("  <table>")
+        lines.append("    <tr><th>Field</th><th>Value</th></tr>")
+        for key in ["enabled", "parcel_layer", "parcel_count", "notes"]:
+            if key in maaamet_validation:
+                value = maaamet_validation.get(key)
+                lines.append(
+                    "    <tr>"
+                    f"<td>{html.escape(key)}</td>"
+                    f"<td><code>{html.escape(json.dumps(value, ensure_ascii=False))}</code></td>"
+                    "</tr>"
+                )
+        for key in [
+            "maaamet_land_area_ha_sum",
+            "hansen_land_area_ha_sum",
+            "land_area_diff_ha",
+            "land_area_diff_pct",
+        ]:
+            if key in maaamet_validation:
+                value = maaamet_validation.get(key)
+                lines.append(
+                    "    <tr>"
+                    f"<td>{html.escape(key)}</td>"
+                    f"<td><code>{html.escape(json.dumps(value, ensure_ascii=False))}</code></td>"
+                    "</tr>"
+                )
+        lines.append("  </table>")
+
+        parcels = maaamet_validation.get("parcels")
+        if isinstance(parcels, list):
+            lines.append("  <h3>Top 10 parcels (by forest area)</h3>")
+            lines.append("  <table>")
+            lines.append("    <tr><th>Parcel ID</th><th>Hansen land (ha)</th><th>Maa-amet land (ha)</th><th>Hansen forest (ha)</th><th>Maa-amet forest (ha)</th></tr>")
+            if parcels:
+                for row in parcels:
+                    if not isinstance(row, dict):
+                        continue
+                    lines.append(
+                        "    <tr>"
+                        f"<td>{html.escape(str(row.get('parcel_id','')))}</td>"
+                        f"<td>{html.escape(str(row.get('hansen_land_area_ha','')))}</td>"
+                        f"<td>{html.escape(str(row.get('maaamet_land_area_ha','')))}</td>"
+                        f"<td>{html.escape(str(row.get('hansen_forest_area_ha','')))}</td>"
+                        f"<td>{html.escape(str(row.get('maaamet_forest_area_ha','')))}</td>"
+                        "</tr>"
+                    )
+            else:
+                lines.append("    <tr><td colspan=\"5\"><em>No Maa-amet parcels available.</em></td></tr>")
+            lines.append("  </table>")
+
+    forest_crosscheck = validation.get("forest_area_crosscheck", {}) if isinstance(validation.get("forest_area_crosscheck"), dict) else {}
+    if forest_crosscheck:
+        lines.append("  <h2>Hansen vs Maa-amet forest area crosscheck</h2>")
+        lines.append("  <table>")
+        lines.append("    <tr><th>Field</th><th>Value</th></tr>")
+        for key in ["source", "outcome", "reason"]:
+            if key in forest_crosscheck:
+                lines.append(
+                    "    <tr>"
+                    f"<td>{html.escape(key)}</td>"
+                    f"<td><code>{html.escape(json.dumps(forest_crosscheck.get(key), ensure_ascii=False))}</code></td>"
+                    "</tr>"
+                )
+        for key in ["reference", "computed", "comparison"]:
+            if key in forest_crosscheck:
+                lines.append(
+                    "    <tr>"
+                    f"<td>{html.escape(key)}</td>"
+                    f"<td><code>{html.escape(json.dumps(forest_crosscheck.get(key), ensure_ascii=False))}</code></td>"
+                    "</tr>"
+                )
+        for ref_key in ["csv_ref", "summary_ref"]:
+            ref = forest_crosscheck.get(ref_key)
+            if isinstance(ref, dict):
+                relpath = ref.get("relpath")
+                if relpath:
+                    href = html.escape(relpath_from_html(run_dir, html_path, str(relpath)))
+                    lines.append(
+                        "    <tr>"
+                        f"<td>{html.escape(ref_key)}</td>"
+                        f"<td><a href=\"{href}\">{html.escape(str(relpath))}</a></td>"
+                        "</tr>"
+                    )
+        lines.append("  </table>")
 
     if map_assets and map_assets.get("config_relpath"):
         map_config_relpath = str(map_assets.get("config_relpath"))
