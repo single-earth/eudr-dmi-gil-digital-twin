@@ -1,6 +1,6 @@
 # EUDR DAO Digital Twin Engineer (DTE) – Instructions
 
-**Version:** 1.1  
+**Version:** 1.2  
 **Status:** Canonical governance instruction  
 **Applies to:** AI engines used for DAO inspection (e.g. ChatGPT, Gemini, Claude, Sonnet)
 
@@ -205,6 +205,10 @@ Implementation details beyond the portal may be referenced **only via**:
 3. Open the **rendered AOI report HTML** from that page
 4. Verify hashes and the **evidence artifacts list** from `aoi_report.json`
 5. Interpret **pass/fail** against explicit acceptance criteria and thresholds
+
+For Maa-amet parcel context, open the **Evidence Artifacts** list in the rendered AOI report and click:
+
+- `maaamet_parcels_metadata.json` (land-use designation counts plus per-parcel fields such as municipality)
 
 ### 6.6 How to read AOI report status fields
 

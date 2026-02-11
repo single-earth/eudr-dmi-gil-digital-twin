@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>DTE Instructions v1.1</title>
+    <title>DTE Instructions v1.2</title>
     <style>
       :root { --fg:#111; --bg:#fff; --muted:#666; --card:#f6f7f9; --link:#0b5fff; }
       body { font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
@@ -46,7 +46,7 @@
       <a href="regulation/sources.html">Sources</a>
       <a href="regulation/policy_to_evidence_spine.html">Spine</a>
       <a href="views/index.html">Views</a>
-      <a href="dte_instructions.html" class="active">DTE Instructions v1.1</a>
+      <a href="dte_instructions.html">DTE Instructions v1.1</a>
       <a href="dte_instructions.html#conversation-starters">Conversation Starters</a>
       <a href="aoi_reports/index.html">AOI Reports</a>
       <a href="dao_stakeholders/index.html">DAO (Stakeholders)</a>
@@ -59,7 +59,7 @@
       <div class="wrap">
         <div class="md">
 <h1>EUDR DAO Digital Twin Engineer (DTE) – Instructions</h1>
-<p><strong>Version:</strong> 1.1</p>
+<p><strong>Version:</strong> 1.2</p>
 <p><strong>Status:</strong> Canonical governance instruction</p>
 <p><strong>Applies to:</strong> AI engines used for DAO inspection (e.g. ChatGPT, Gemini, Claude, Sonnet)</p>
 <p>---</p>
@@ -232,6 +232,10 @@
 <li>Verify hashes and the <strong>evidence artifacts list</strong> from <code>aoi_report.json</code></li>
 <li>Interpret <strong>pass/fail</strong> against explicit acceptance criteria and thresholds</li>
 </ol>
+<p>For Maa-amet parcel context, open the <strong>Evidence Artifacts</strong> list in the rendered AOI report and click:</p>
+<ul>
+<li><code>maaamet_parcels_metadata.json</code> (land-use designation counts plus per-parcel fields such as municipality)</li>
+</ul>
 <h3>6.6 How to read AOI report status fields</h3>
 <ul>
 <li><strong>results[].status</strong> indicates the reported status for each acceptance criteria result.</li>
