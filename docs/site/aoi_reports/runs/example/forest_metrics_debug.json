@@ -1,31 +1,31 @@
 {
   "areas_ha": {
-    "forest_2024": 587.744748713547,
-    "forest_end_year": 587.744748713547,
-    "forest_end_year_ha": 587.744748713547,
-    "loss_2021_end_year": 20.67936513042152,
-    "loss_total": 50.45071596904397,
-    "loss_total_2001_2024": 50.45071596904397,
-    "rfm": 638.1954646825909
+    "forest_2024": 0.0,
+    "forest_end_year": 0.0,
+    "forest_end_year_ha": 0.0,
+    "loss_2021_end_year": 0.0,
+    "loss_total": 0.0,
+    "loss_total_2001_2024": 0.0,
+    "rfm": 0.0
   },
   "mask_true_pixels": {
-    "forest_end_year": 14552,
-    "loss_2021_end_year": 512,
-    "rfm": 15801
+    "forest_end_year": 0,
+    "loss_2021_end_year": 0,
+    "rfm": 0
   },
   "pixel_area_m2": {
-    "max": 404.7012385427952,
-    "mean": 403.8840812921156,
-    "min": 403.59477749466896
+    "max": 460.8358089482734,
+    "mean": 460.8358089482735,
+    "min": 460.8358089482734
   },
   "raster_shapes": [
     [
-      1,
-      1
+      38744,
+      41218
     ],
     [
-      511,
-      1438
+      34349,
+      44946
     ]
   ]
 }
