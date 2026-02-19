@@ -23,14 +23,14 @@
     {
       "dataset_id": "aoi_geometry_input",
       "license": "user_supplied",
-      "retrieved_at_utc": "2026-02-19T09:14:30+00:00",
+      "retrieved_at_utc": "2026-02-19T09:35:23+00:00",
       "source_url": "inputs/aoi.geojson",
       "version": "user_supplied"
     },
     {
       "dataset_id": "hansen_gfc_2024_v1_12",
       "license": "Hansen GFC (public)",
-      "retrieved_at_utc": "2026-02-19T09:14:30+00:00",
+      "retrieved_at_utc": "2026-02-19T09:35:23+00:00",
       "source_url": "https://storage.googleapis.com/earthenginepartners-hansen/GFC-2024-v1.12/",
       "version": "2024-v1.12"
     }
@@ -51,7 +51,7 @@
         "role": "report_html"
       },
       "relpath": "reports/aoi_report_v2/mixed_crop_latin_america_colombia.html",
-      "sha256": "a7c72489d3eb0dd17ba7272e9e915168fb64bb1d4ff76078e2bc9cb5f2fc4604",
+      "sha256": "2c82785ba902baa8dd6058f928358dde908f36afce50ae6cafda8b3d0ba03048",
       "size_bytes": 10266
     },
     {
@@ -60,7 +60,7 @@
         "role": "report_json"
       },
       "relpath": "reports/aoi_report_v2/mixed_crop_latin_america_colombia.json",
-      "sha256": "02beffca4072317a93d89b20507ac5a0f1f694d0a486d6e1210c3e46e046c6ea",
+      "sha256": "37df0da42c4e8a8104e319187d27eeca384ea3b924c0217364f016f46f19e2c7",
       "size_bytes": 6540
     },
     {
@@ -105,8 +105,8 @@
         "role": "forest_loss_summary"
       },
       "relpath": "reports/aoi_report_v2/mixed_crop_latin_america_colombia/hansen/forest_loss_post_2020_summary.json",
-      "sha256": "c76c4b2f9ff1c4d5ea3e6a0c0d5fe4e3f7bb0b101f53b96255c0a8af562e57c1",
-      "size_bytes": 1220
+      "sha256": "5ab3a013bb84fc0faf19369fc1d8b3c00d4f2977612bbc35a6ab5a7713dedec0",
+      "size_bytes": 1752
     },
     {
       "content_type": "application/json",
@@ -114,7 +114,7 @@
         "role": "hansen_tiles_manifest"
       },
       "relpath": "reports/aoi_report_v2/mixed_crop_latin_america_colombia/hansen/forest_loss_post_2020_tiles.json",
-      "sha256": "be31496ddb5b2ac2ef25e577bbc62f35f834a7fb31ca24462c547de35038ea06",
+      "sha256": "7339fff7812c531607612fc9d1e65f002e3ed6fd3e81282a8440ec03cee34aeb",
       "size_bytes": 1176
     },
     {
@@ -198,7 +198,7 @@
       "tile_source": "local",
       "tiles_manifest": {
         "relpath": "reports/aoi_report_v2/mixed_crop_latin_america_colombia/hansen/forest_loss_post_2020_tiles.json",
-        "sha256": "be31496ddb5b2ac2ef25e577bbc62f35f834a7fb31ca24462c547de35038ea06"
+        "sha256": "7339fff7812c531607612fc9d1e65f002e3ed6fd3e81282a8440ec03cee34aeb"
       },
       "tiles_used": [
         {
@@ -220,7 +220,7 @@
       ]
     }
   ],
-  "generated_at_utc": "2026-02-19T09:14:30+00:00",
+  "generated_at_utc": "2026-02-19T09:35:23+00:00",
   "inputs": {
     "sources": [
       {
@@ -277,7 +277,7 @@
     },
     "implementation": {
       "forest_loss_post_2020": "v1",
-      "git_commit": "84f68fd1c14befef767586e2924dab079f1bf3c5"
+      "git_commit": "0965cc5e06f9e0b92d69bd37f4be70cc076a1da7"
     }
   },
   "policy_mapping": [

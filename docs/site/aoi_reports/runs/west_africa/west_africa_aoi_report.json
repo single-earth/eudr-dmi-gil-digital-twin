@@ -23,14 +23,14 @@
     {
       "dataset_id": "aoi_geometry_input",
       "license": "user_supplied",
-      "retrieved_at_utc": "2026-02-19T09:17:27+00:00",
+      "retrieved_at_utc": "2026-02-19T09:35:26+00:00",
       "source_url": "inputs/aoi.geojson",
       "version": "user_supplied"
     },
     {
       "dataset_id": "hansen_gfc_2024_v1_12",
       "license": "Hansen GFC (public)",
-      "retrieved_at_utc": "2026-02-19T09:17:27+00:00",
+      "retrieved_at_utc": "2026-02-19T09:35:26+00:00",
       "source_url": "https://storage.googleapis.com/earthenginepartners-hansen/GFC-2024-v1.12/",
       "version": "2024-v1.12"
     }
@@ -51,7 +51,7 @@
         "role": "report_html"
       },
       "relpath": "reports/aoi_report_v2/cocoa_west_africa_ghana.html",
-      "sha256": "6ee39d80eb702be115b24290a138ee515ee7610c15d5dd98c6f31d4aa7e51e5b",
+      "sha256": "aa47572690eaae5b080455fcd14160c8ce6823f8925a803f04611c50dbc7c49a",
       "size_bytes": 9950
     },
     {
@@ -60,7 +60,7 @@
         "role": "report_json"
       },
       "relpath": "reports/aoi_report_v2/cocoa_west_africa_ghana.json",
-      "sha256": "dd26f946cc491350acf6835e7ad3ea0c200c114c5ed910211e5ea4cd4f0def06",
+      "sha256": "4bba997449ac774238c9233b3c41ab8496d086e1147eef9f06f6f867a8e8b07d",
       "size_bytes": 6462
     },
     {
@@ -114,7 +114,7 @@
         "role": "hansen_tiles_manifest"
       },
       "relpath": "reports/aoi_report_v2/cocoa_west_africa_ghana/hansen/forest_loss_post_2020_tiles.json",
-      "sha256": "a9a6d25a4166130d74ebad7b6e87cb9f0bb0c4d8743dc2e373b95867e2668380",
+      "sha256": "a816010e0bf140a9c1200f985e2bb17b11ceaf1e1078e5a5deab78deb3c6351e",
       "size_bytes": 1165
     },
     {
@@ -198,7 +198,7 @@
       "tile_source": "local",
       "tiles_manifest": {
         "relpath": "reports/aoi_report_v2/cocoa_west_africa_ghana/hansen/forest_loss_post_2020_tiles.json",
-        "sha256": "a9a6d25a4166130d74ebad7b6e87cb9f0bb0c4d8743dc2e373b95867e2668380"
+        "sha256": "a816010e0bf140a9c1200f985e2bb17b11ceaf1e1078e5a5deab78deb3c6351e"
       },
       "tiles_used": [
         {
@@ -220,7 +220,7 @@
       ]
     }
   ],
-  "generated_at_utc": "2026-02-19T09:17:27+00:00",
+  "generated_at_utc": "2026-02-19T09:35:26+00:00",
   "inputs": {
     "sources": [
       {
@@ -277,7 +277,7 @@
     },
     "implementation": {
       "forest_loss_post_2020": "v1",
-      "git_commit": "84f68fd1c14befef767586e2924dab079f1bf3c5"
+      "git_commit": "0965cc5e06f9e0b92d69bd37f4be70cc076a1da7"
     }
   },
   "policy_mapping": [
