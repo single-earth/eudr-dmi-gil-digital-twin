@@ -12,6 +12,10 @@
     h2 { margin-top: 28px; }
     code { background: #f6f6f6; padding: 1px 4px; border-radius: 4px; }
     .muted { color: #666; }
+        .map-legend { background: #fff; border: 1px solid #ddd; border-radius: 6px; padding: 8px 10px; box-shadow: 0 1px 6px rgba(0,0,0,0.2); font-size: 12px; line-height: 1.4; }
+        .map-legend-item { display: flex; align-items: center; gap: 6px; margin-top: 6px; }
+        .map-legend-item input { margin: 0; }
+        .map-legend-swatch { display: inline-block; width: 12px; height: 12px; border: 1px solid #333; }
         #map { height: 420px; border: 1px solid #ddd; border-radius: 8px; margin: 12px 0 16px; background: #fafafa; }
   </style>
 </head>
@@ -20,7 +24,7 @@
   <table>
     <tr><th>AOI</th><td>mixed_crop_latin_america_colombia</td></tr>
     <tr><th>Bundle</th><td>latin_america</td></tr>
-    <tr><th>Generated (UTC)</th><td>2026-02-19T12:16:56+00:00</td></tr>
+    <tr><th>Generated (UTC)</th><td>2026-02-19T12:33:47+00:00</td></tr>
     <tr><th>Report Version</th><td>aoi_report_v2</td></tr>
     <tr><th>Geometry Ref</th><td>geojson: inputs/aoi.geojson</td></tr>
     <tr><th>AOI area (ha)</th><td>41772.04912311554</td></tr>
@@ -89,33 +93,110 @@
                     ]);
                     map.fitBounds(bounds);
 
-                    const overlays = {};
-                    const baseLayers = { 'Satellite': satellite };
-                    const addGeoJson = (label, url, options) => {
+                    const layerDefs = [
+                        {
+                            key: 'forest_2000',
+                            label: 'Forest cover 2000',
+                            color: '#2e7d32',
+                            defaultOn: true,
+                            options: { style: { color: '#2e7d32', weight: 1, fillOpacity: 0.3 } },
+                        },
+                        {
+                            key: 'forest_end_year',
+                            label: `Forest cover ${config.latest_year}`,
+                            color: '#1b5e20',
+                            defaultOn: true,
+                            options: { style: { color: '#1b5e20', weight: 1, fillOpacity: 0.3 } },
+                        },
+                        {
+                            key: 'forest_loss_post_2020',
+                            label: 'Forest loss since 2020',
+                            color: '#c62828',
+                            defaultOn: true,
+                            options: { style: { color: '#c62828', weight: 2, fillOpacity: 0.55 } },
+                        },
+                        {
+                            key: 'aoi_boundary',
+                            label: 'AOI boundary',
+                            color: '#00e5ff',
+                            defaultOn: true,
+                            options: { style: { color: '#00e5ff', weight: 4, opacity: 1, fillOpacity: 0 } },
+                        },
+                        {
+                            key: 'parcels',
+                            label: 'Maa-amet parcels',
+                            color: '#000000',
+                            defaultOn: false,
+                            options: {
+                                style: { color: '#000000', weight: 3, opacity: 1, fillOpacity: 0 },
+                                onEachFeature: (feature, layer) => {
+                                    const props = feature.properties || {};
+                                    const label = `${props.parcel_id || ''} | forest_ha=${props.hansen_forest_area_ha ?? ''} | loss_ha=${props.hansen_forest_loss_ha ?? ''}`;
+                                    layer.bindTooltip(label, { sticky: true });
+                                },
+                            },
+                        },
+                    ];
+
+                    const overlayGroups = {};
+                    layerDefs.forEach((def) => {
+                        const group = L.layerGroup();
+                        overlayGroups[def.key] = group;
+                        if (def.defaultOn) {
+                            group.addTo(map);
+                        }
+                    });
+
+                    const addGeoJson = (def, url) => {
                         if (!url) return;
                         const resolvedUrl = new URL(url, configBaseUrl).toString();
                         fetch(resolvedUrl)
                             .then((r) => r.json())
                             .then((data) => {
-                                const layer = L.geoJSON(data, options).addTo(map);
-                                overlays[label] = layer;
+                                L.geoJSON(data, def.options).addTo(overlayGroups[def.key]);
+                            })
+                            .catch((err) => {
+                                console.warn(`Layer load failed: ${def.label}`, err);
                             });
                     };
 
-                      addGeoJson('Forest cover 2000', config.layers.forest_2000, { style: { color: '#2e7d32', weight: 1, fillOpacity: 0.3 } });
-                      addGeoJson(`Forest cover ${config.latest_year}`, config.layers.forest_end_year, { style: { color: '#1b5e20', weight: 1, fillOpacity: 0.3 } });
-                    addGeoJson('Forest loss since 2020', config.layers.forest_loss_post_2020, { style: { color: '#c62828', weight: 2, fillOpacity: 0.55 } });
-                    addGeoJson('AOI boundary', config.layers.aoi_boundary, { style: { color: '#00e5ff', weight: 4, opacity: 1, fillOpacity: 0 } });
-                    addGeoJson('Maa-amet parcels', config.layers.parcels, {
-                        style: { color: '#000000', weight: 3, opacity: 1, fillOpacity: 0 },
-                        onEachFeature: (feature, layer) => {
-                            const props = feature.properties || {};
-                            const label = `${props.parcel_id || ''} | forest_ha=${props.hansen_forest_area_ha ?? ''} | loss_ha=${props.hansen_forest_loss_ha ?? ''}`;
-                            layer.bindTooltip(label, { sticky: true });
-                        },
-                    });
+                    layerDefs.forEach((def) => addGeoJson(def, config.layers?.[def.key]));
 
-                    L.control.layers(baseLayers, overlays, { collapsed: false }).addTo(map);
+                    const legend = L.control({ position: 'topright' });
+                    legend.onAdd = function () {
+                        const div = L.DomUtil.create('div', 'map-legend');
+                        div.innerHTML = '<strong>Map layers</strong>';
+                        layerDefs.forEach((def, idx) => {
+                            const hasUrl = Boolean(config.layers?.[def.key]);
+                            if (!hasUrl) return;
+                            const checked = map.hasLayer(overlayGroups[def.key]) ? 'checked' : '';
+                            const item = document.createElement('label');
+                            item.className = 'map-legend-item';
+                            item.innerHTML = `
+                                <input type="checkbox" data-layer-key="${def.key}" ${checked} />
+                                <span class="map-legend-swatch" style="background:${def.color}"></span>
+                                <span>${def.label}</span>
+                            `;
+                            div.appendChild(item);
+                        });
+                        L.DomEvent.disableClickPropagation(div);
+                        L.DomEvent.disableScrollPropagation(div);
+
+                        div.querySelectorAll('input[type="checkbox"]').forEach((el) => {
+                            el.addEventListener('change', (event) => {
+                                const key = event.target.getAttribute('data-layer-key');
+                                const group = overlayGroups[key];
+                                if (!group) return;
+                                if (event.target.checked) {
+                                    map.addLayer(group);
+                                } else {
+                                    map.removeLayer(group);
+                                }
+                            });
+                        });
+                        return div;
+                    };
+                    legend.addTo(map);
                 });
         })();
     </script>
@@ -137,15 +218,15 @@
   <h2>Data sources & provenance</h2>
   <table>
     <tr><th>dataset_id</th><th>version</th><th>retrieved_at_utc</th><th>license</th><th>source_url</th></tr>
-    <tr><td>aoi_geometry_input</td><td>user_supplied</td><td>2026-02-19T12:16:56+00:00</td><td>user_supplied</td><td>inputs/aoi.geojson</td></tr>
-<tr><td>hansen_gfc_2024_v1_12</td><td>2024-v1.12</td><td>2026-02-19T12:16:56+00:00</td><td>Hansen GFC (public)</td><td>https://storage.googleapis.com/earthenginepartners-hansen/GFC-2024-v1.12/</td></tr>
+    <tr><td>aoi_geometry_input</td><td>user_supplied</td><td>2026-02-19T12:33:47+00:00</td><td>user_supplied</td><td>inputs/aoi.geojson</td></tr>
+<tr><td>hansen_gfc_2024_v1_12</td><td>2024-v1.12</td><td>2026-02-19T12:33:47+00:00</td><td>Hansen GFC (public)</td><td>https://storage.googleapis.com/earthenginepartners-hansen/GFC-2024-v1.12/</td></tr>
   </table>
 
   <h2>Methods & parameters</h2>
   <table>
     <tr><th>aoi_area_method</th><td>geodesic_wgs84_pyproj</td></tr>
 <tr><th>forest_loss_post_2020</th><td>{'canopy_threshold_percent': 10, 'cutoff_year': 2020, 'acceptance_threshold_ha': 0.0, 'pixel_area_method': 'projected_constant_pixel_area', 'area_method': 'projected_constant_pixel_area', 'lossyear_mapping': '0=no_loss; 1..end_year_code=2001..end_year (year=lossyear+2000)', 'mask_definitions': {'rfm_mask': 'treecover2000 >= canopy_threshold_percent', 'loss_total': 'rfm_mask & (lossyear > 0)', 'loss_post_cutoff': 'rfm_mask & (lossyear > 20) [2021+]', 'loss_2021_2024': 'rfm_mask & (lossyear in 21..24)', 'forest_2024': 'rfm_mask & (lossyear == 0)'}, 'end_year': 2024, 'forest_end_year_ha': 0.0}</td></tr>
-<tr><th>implementation</th><td>{'forest_loss_post_2020': 'v1', 'git_commit': '0965cc5e06f9e0b92d69bd37f4be70cc076a1da7'}</td></tr>
+<tr><th>implementation</th><td>{'forest_loss_post_2020': 'v1', 'git_commit': '2fbec04c76e90e3d248ea00ea94b9a003a4bb9ef'}</td></tr>
   </table>
 
   <h2>Traceability to EUDR Articles</h2>
