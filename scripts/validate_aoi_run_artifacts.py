@@ -6,10 +6,24 @@ import json
 from pathlib import Path
 
 
+def resolve_report_json_path(run_dir: Path) -> Path:
+    default = run_dir / "aoi_report.json"
+    if default.is_file():
+        return default
+
+    candidates = sorted(
+        path for path in run_dir.glob("*.json") if path.name not in {"summary.json", "manifest.json"}
+    )
+    if len(candidates) == 1:
+        return candidates[0]
+    if not candidates:
+        raise SystemExit(f"Missing run report JSON in {run_dir}")
+    names = ", ".join(path.name for path in candidates)
+    raise SystemExit(f"Multiple run report JSON candidates in {run_dir}: {names}")
+
+
 def validate_run(run_dir: Path) -> None:
-    report_path = run_dir / "aoi_report.json"
-    if not report_path.is_file():
-        raise SystemExit(f"Missing aoi_report.json: {report_path}")
+    report_path = resolve_report_json_path(run_dir)
 
     report = json.loads(report_path.read_text(encoding="utf-8"))
     evidence = report.get("evidence_artifacts", [])

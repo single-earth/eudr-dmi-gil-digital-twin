@@ -22,7 +22,7 @@ Implementation changes must be proposed against that file.
 
 ## AOI Forest Metrics (Inspection Notes)
 
-The example AOI report bundle in docs/site/aoi_reports/runs/example/ reflects the current
+Published AOI report bundles in docs/site/aoi_reports/runs/<run_id>/ reflect the current
 authoritative implementation outputs. Inspectors should expect:
 
 - Metric names used in v2 reports:

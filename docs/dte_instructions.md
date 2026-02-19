@@ -144,7 +144,7 @@ When inspecting AOI reports, you MUST follow this exact discipline:
   (e.g. `reports/aoi_report_v1/<aoi_id>.html`)
 
 4. Open JSON artefacts **only via links inside `report.html`**  
-  (e.g. `aoi_report.json`)
+  (e.g. `estonia_aoi_report.json`, `latin_america_aoi_report.json`)
 
 🚫 **You MUST NOT:**
 - Construct or infer “expected” URLs from run IDs
@@ -161,7 +161,7 @@ Some AI inspection environments will refuse to open artefacts unless the URL was
 Every AOI-related claim MUST cite **one of the following**:
 
 - The AOI Reports index entry that was clicked
-- The specific `runs/example/report.html` page that was opened
+- The specific `runs/<run_id>/report.html` page that was opened
 - A JSON artefact that was reached via an in-page link
 
 If an artefact is listed in the portal but **cannot be opened via navigation**, this MUST be recorded as:
@@ -181,13 +181,13 @@ This is a valid and actionable governance finding.
   Evidence source registry entries with “Used by” pointers into implementation paths
 
 - **AOI Reports index**  
-  A single AOI-agnostic example run under `runs/example/`, linking to:
+  A deterministic published AOI set under `runs/<run_id>/`, linking to:
   - `report.html`
   - Associated JSON artefacts via in-page links
 
 ### 6.4 Artefact publication contract (DT)
 
-- `aoi_report.json` is the source of truth for declared artefacts.
+- Run-level AOI report JSON (`*_aoi_report.json`) is the source of truth for declared artefacts.
 - Every declared artefact must exist at its declared relative path in the published bundle.
 - `report.html` must link to the declared HTML report artefact.
 - Builds fail if any declared artefact is missing or unlinked.
@@ -203,7 +203,7 @@ Implementation details beyond the portal may be referenced **only via**:
 1. Start at **AOI Reports index**
 2. Open the **run report page** (`report.html`)
 3. Open the **rendered AOI report HTML** from that page
-4. Verify hashes and the **evidence artifacts list** from `aoi_report.json`
+4. Verify hashes and the **evidence artifacts list** from the run-level AOI report JSON
 5. Interpret **pass/fail** against explicit acceptance criteria and thresholds
 
 For Maa-amet parcel context, open the **Evidence Artifacts** list in the rendered AOI report and click:
@@ -329,10 +329,10 @@ Produce a **structured Session Closeout** matching the DAO proposal schema.
 **AOI reporting change request #1 (title)**
 
 - **New or changed output:**  
-  e.g. `aoi_report.json`, deforestation signal, Maa-amet cross-check
+  e.g. `*_aoi_report.json`, deforestation signal, Maa-amet cross-check
 
 - **Portal appearance:**  
-  `runs/example/report.html` + JSON linked from report page
+  `runs/<run_id>/report.html` + JSON linked from report page
 
 - **Tests / validation:**  
   Schema checks; hash/manifest consistency
@@ -366,7 +366,7 @@ Produce a **structured Session Closeout** matching the DAO proposal schema.
    → Reproducibility, provenance, “Used by”
 
 3. Inspect **AOI Runs**  
-  → `aoi_report.json` vs acceptance criteria
+  → run-level AOI report JSON vs acceptance criteria
 
 4. Record gaps  
    → Missing artefact, unclear criteria, broken or inaccessible link
@@ -389,10 +389,10 @@ This rule ensures stakeholder Q/A always results in **actionable, auditable, and
 
 Use these starters to inspect the published AOI report bundle and formulate DAO proposals.
 
-1. Analyze the example EUDR AOI report published in the Digital Twin HTML bundle.  Use the authorized inspection links to open the example AOI report (HTML and JSON). Describe:  report structure,  evidence artefacts included,  and how results are presented for inspection.<br>Helper: Use runs/example/report.html → “Core inspection artifacts” and “Declared evidence artifacts”.
-2. Navigate to the AOI Reports section of the Digital Twin and inspect the published example report.  Start from the AOI Reports index and follow the portal links to the example report HTML and JSON.<br>Helper: Use AOI Reports index → run report page → open aoi_report.json and the rendered report link.
+1. Analyze one published EUDR AOI report in the Digital Twin HTML bundle. Use the authorized inspection links to open that AOI report (HTML and JSON). Describe: report structure, evidence artefacts included, and how results are presented for inspection.<br>Helper: Use runs/&lt;run_id&gt;/report.html → “Core inspection artifacts” and “Declared evidence artifacts”.
+2. Navigate to the AOI Reports section of the Digital Twin and inspect one published report. Start from the AOI Reports index and follow portal links to the run report HTML and JSON.<br>Helper: Use AOI Reports index → run report page → open run-level AOI report JSON and the rendered report link.
 3. Evaluate whether the example AOI report provides sufficient evidence for EUDR due-diligence review.  Identify:  what evidence is present,  what is missing or ambiguous,  and which EUDR requirements cannot be assessed from this report alone.<br>Helper: Use “What this example demonstrates”, “Known evidence gaps (for DAO)”, and the Evidence Registry tables.
-4. Trace how evidence in the example AOI report maps to EUDR regulatory requirements.  Identify:  which Articles are implicitly addressed,  where mappings are explicit vs inferred,  and where traceability breaks down.<br>Helper: Use aoi_report.json → regulatory_traceability + report_metadata.regulatory_context.
+4. Trace how evidence in a published AOI report maps to EUDR regulatory requirements. Identify: which Articles are implicitly addressed, where mappings are explicit vs inferred, and where traceability breaks down.<br>Helper: Use run-level AOI report JSON → regulatory_traceability + report_metadata.regulatory_context.
 5. Identify evidence gaps revealed by the example AOI report.  List gaps that should be raised through the DAO process, distinguishing:  missing artefacts,  unclear acceptance criteria,  and unverifiable assumptions.<br>Helper: Use “Known evidence gaps (for DAO)” and validation/acceptance criteria sections.
 6. Convert observations from the example AOI report into DAO (Stakeholders) questions and proposals.  Focus on:  transparency,  inspectability,  and evidence sufficiency — not implementation details.<br>Helper: Use the DAO (Stakeholders) template block and cite portal URLs.
 7. DAO proposal (Developers)  Propose concrete DAO (Developers) changes based on the example AOI report.  Specify:  file-level changes,  deterministic output requirements,  validation or test criteria,  and regeneration guarantees.<br>Helper: Use the DAO (Developers) template block and the gate requirement for scripts/run_example_report_clean.sh.
