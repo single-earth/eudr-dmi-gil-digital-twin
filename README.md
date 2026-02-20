@@ -67,6 +67,14 @@ python3 scripts/test_aoi_report_renderer.py
 python3 scripts/test_aoi_report_integration.py
 ```
 
+### DAO reports validation
+
+From the repo root:
+
+```sh
+python3 scripts/validate_dao_reports_links.py
+```
+
 ## Definitions
 
 ### DAO (Procedural DAO)

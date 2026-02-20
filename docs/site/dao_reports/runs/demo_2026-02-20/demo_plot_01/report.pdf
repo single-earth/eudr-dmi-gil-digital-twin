@@ -1,0 +1,166 @@
+%PDF-1.3
+%“Œ‹ž ReportLab Generated PDF document (opensource)
+1 0 obj
+<<
+/F1 2 0 R /F2 3 0 R
+>>
+endobj
+2 0 obj
+<<
+/BaseFont /Helvetica /Encoding /WinAnsiEncoding /Name /F1 /Subtype /Type1 /Type /Font
+>>
+endobj
+3 0 obj
+<<
+/BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding /Name /F2 /Subtype /Type1 /Type /Font
+>>
+endobj
+4 0 obj
+<<
+/Contents 8 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 7 0 R /Resources <<
+/Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
+>> /Rotate 0 /Trans <<
+
+>> 
+  /Type /Page
+>>
+endobj
+5 0 obj
+<<
+/PageMode /UseNone /Pages 7 0 R /Type /Catalog
+>>
+endobj
+6 0 obj
+<<
+/Author (anonymous) /CreationDate (D:20000101000000+00'00') /Creator (anonymous) /Keywords () /ModDate (D:20000101000000+00'00') /Producer (ReportLab PDF Library - \(opensource\)) 
+  /Subject (unspecified) /Title (untitled) /Trapped /False
+>>
+endobj
+7 0 obj
+<<
+/Count 1 /Kids [ 4 0 R ] /Type /Pages
+>>
+endobj
+8 0 obj
+<<
+/Length 4597
+>>
+stream
+1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
+BT /F2 16 Tf 19.2 TL ET
+BT 1 0 0 1 40 801.8898 Tm (EUDR Report V1) Tj T* ET
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 40 781.8898 Tm (Report ID: demo_2026-02-20::demo_plot_01) Tj T* ET
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 40 767.8898 Tm (Run ID: demo_2026-02-20) Tj T* ET
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 40 753.8898 Tm (Generated UTC: 2026-02-20T08:56:33+00:00) Tj T* ET
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 40 739.8898 Tm  T* ET
+BT /F2 10 Tf 12 TL ET
+BT 1 0 0 1 40 731.8898 Tm (Company data) Tj T* ET
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 40 717.8898 Tm (Operator: N/A) Tj T* ET
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 40 703.8898 Tm (Address: N/A) Tj T* ET
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 40 689.8898 Tm (Identifier \(value\): N/A) Tj T* ET
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 40 675.8898 Tm  T* ET
+BT /F2 10 Tf 12 TL ET
+BT 1 0 0 1 40 667.8898 Tm (Commodity data) Tj T* ET
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 40 653.8898 Tm (Commodity type: cocoa) Tj T* ET
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 40 639.8898 Tm (Country region label: West Africa) Tj T* ET
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 40 625.8898 Tm (HS code: N/A) Tj T* ET
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 40 611.8898 Tm (Volume: N/A) Tj T* ET
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 40 597.8898 Tm (Country of production: Ghana) Tj T* ET
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 40 583.8898 Tm  T* ET
+BT /F2 10 Tf 12 TL ET
+BT 1 0 0 1 40 575.8898 Tm (Plot geolocation references) Tj T* ET
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 40 561.8898 Tm (Demo Plot 01 | cocoa_west_africa_ghana.geojson | centroid=\(6.625, -2.025\)) Tj T* ET
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 40 547.8898 Tm (area_ha=27510.533841 \(approx_equirectangular_shoelace\) | polygon_count=1) Tj T* ET
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 40 533.8898 Tm (metadata.aoi_name: Cocoa sample AOI \(Ghana\)) Tj T* ET
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 40 519.8898 Tm (metadata.commodity: cocoa) Tj T* ET
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 40 505.8898 Tm (metadata.country: Ghana) Tj T* ET
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 40 491.8898 Tm (metadata.max_area_constraint_ha: 50000) Tj T* ET
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 40 477.8898 Tm (metadata.approx_area_ha: 27515.39) Tj T* ET
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 40 463.8898 Tm (metadata.note: Sample AOI polygon for portal testing \(not a verified farm boundary\).) Tj T* ET
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 40 449.8898 Tm (metadata.reference_sources: [{'title': 'FAO \227 Cocoa in Ghana \(overview of main growing areas in central & southwest Ghana\)', 'url': 'https://www.fao.org/4/y5749e/y5749e07.htm'}, {'title': 'World Cocoa Foundation \227 Ghana National Cocoa Agroforestry Plan / Implementation Plan \(regional production context incl. Ashanti & Western North\)', 'url': 'https://worldcocoafoundation.org/storage/files/national-implementation-plan-ghana.pdf'}, {'title': 'USDA FAS \227 Ghana Cocoa Sector Overview \(includes production regions/map; mentions Ashanti & Western North\)', 'url': 'https://apps.fas.usda.gov/newgainapi/api/Report/DownloadReportByFileName?fileName=Ghana+-+Cocoa+Sector+Overview+-+2025_Accra_Ghana_GH2025-0008.pdf'}]) Tj T* ET
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 40 435.8898 Tm (metadata.commodity_rationale: AOI placed within a well-documented regional production belt for the stated commodity; not a verified farm boundary.) Tj T* ET
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 40 421.8898 Tm  T* ET
+BT /F2 10 Tf 12 TL ET
+BT 1 0 0 1 40 413.8898 Tm (Deforestation assessment) Tj T* ET
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 40 399.8898 Tm (Cutoff date: 2020-12-31) Tj T* ET
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 40 385.8898 Tm (Deforestation detected: N/A) Tj T* ET
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 40 371.8898 Tm (Evidence map: N/A) Tj T* ET
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 40 357.8898 Tm (area_forest_ha: N/A) Tj T* ET
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 40 343.8898 Tm (area_loss_post_2020_ha: N/A) Tj T* ET
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 40 329.8898 Tm (area_aoi_ha: N/A) Tj T* ET
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 40 315.8898 Tm  T* ET
+BT /F2 10 Tf 12 TL ET
+BT 1 0 0 1 40 307.8898 Tm (Risk level: N/A) Tj T* ET
+BT /F2 10 Tf 12 TL ET
+BT 1 0 0 1 40 293.8898 Tm (Compliance readiness: N/A) Tj T* ET
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 40 279.8898 Tm  T* ET
+BT /F2 10 Tf 12 TL ET
+BT 1 0 0 1 40 271.8898 Tm (Deterministic artifacts) Tj T* ET
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 40 257.8898 Tm (- report.json) Tj T* ET
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 40 243.8898 Tm (- report.html) Tj T* ET
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 40 229.8898 Tm (- report.pdf) Tj T* ET
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 40 215.8898 Tm (Manifest pointer: manifest.sha256) Tj T* ET
+ 
+endstream
+endobj
+xref
+0 9
+0000000000 65535 f 
+0000000061 00000 n 
+0000000102 00000 n 
+0000000209 00000 n 
+0000000321 00000 n 
+0000000524 00000 n 
+0000000592 00000 n 
+0000000853 00000 n 
+0000000912 00000 n 
+trailer
+<<
+/ID 
+[<1c178198fbdfa51b25995d89d4102043><1c178198fbdfa51b25995d89d4102043>]
+% ReportLab generated PDF document -- digest (opensource)
+
+/Info 6 0 R
+/Root 5 0 R
+/Size 9
+>>
+startxref
+5560
+%%EOF
