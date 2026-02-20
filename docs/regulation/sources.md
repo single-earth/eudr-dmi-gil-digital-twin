@@ -30,7 +30,7 @@ c) Run the acquisition tool to verify non-empty files, compute SHA-256, and upda
 python tools/regulation/acquire_and_hash.py --verify
 ```
 
-Optional: if your browser session is required and you can export cookies, see [docs/operations/secrets_handling.md](../operations/secrets_handling.md) and run:
+Optional: if your browser session is required and you can export cookies, see https://github.com/GeorgeMadlis/eudr-dmi-gil/blob/main/docs/operations/environment_setup.md and run:
 
 ```sh
 python tools/regulation/acquire_and_hash.py --fetch --cookie-jar /Users/server/secrets/eudr_dmi/eurlex_cookies.txt
@@ -89,7 +89,8 @@ Exit codes:
 - `3` = partial / upstream blocked / uncertain (e.g. LSU WAF challenge without a confident fingerprint diff)
 
 ## Manual verification checklist
-See [docs/regulation/mirror_manual_checklist.md](mirror_manual_checklist.md).
+Use the run output checks listed above under “What to check” and validate publishable artefacts through:
+- https://github.com/GeorgeMadlis/eudr-dmi-gil/blob/main/docs/INSPECTION_INDEX.md
 
 ## How to propose changes
 
@@ -99,7 +100,7 @@ Use the DAO stakeholder prompt to submit questions or change proposals:
 ## See also
 
 - [README.md](../../README.md)
-- [DTE Instructions v1.1](../dte_instructions.md)
+- [DTE Instructions v1.3](../dte_instructions.md)
 - [docs/governance/roles_and_workflow.md](../governance/roles_and_workflow.md)
 - [docs/views/digital_twin_view.md](../views/digital_twin_view.md)
 - https://georgemadlis.github.io/eudr-dmi-gil-digital-twin/

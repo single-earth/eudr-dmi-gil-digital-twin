@@ -23,7 +23,7 @@ Implementation references (authoritative):
 
 ### Update Notes (How to Maintain the Spine)
 - Each new obligation/control MUST add a row and MUST reference a concrete artifact and acceptance criteria.
-- Each evidence artifact MUST be defined in [docs/architecture/evidence_bundle_spec.md](../architecture/evidence_bundle_spec.md).
+- Each evidence artifact MUST be aligned with the authoritative report contract in https://github.com/GeorgeMadlis/eudr-dmi-gil/blob/main/docs/reports/README.md.
 - TODO: Add canonical references/links to any upstream entrypoints used (without describing upstream architecture).
 
 ## Inspector Checklist
@@ -39,7 +39,7 @@ Use the DAO stakeholder prompt to submit questions or change proposals:
 ## See also
 
 - [README.md](../../README.md)
-- [DTE Instructions v1.1](../dte_instructions.md)
+- [DTE Instructions v1.3](../dte_instructions.md)
 - [docs/governance/roles_and_workflow.md](../governance/roles_and_workflow.md)
 - [docs/views/digital_twin_view.md](../views/digital_twin_view.md)
 - https://georgemadlis.github.io/eudr-dmi-gil-digital-twin/

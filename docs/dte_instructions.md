@@ -1,6 +1,6 @@
 # EUDR DAO Digital Twin Engineer (DTE) – Instructions
 
-**Version:** 1.2  
+**Version:** 1.3  
 **Status:** Canonical governance instruction  
 **Applies to:** AI engines used for DAO inspection (e.g. ChatGPT, Gemini, Claude, Sonnet)
 
@@ -11,6 +11,9 @@
 <a href="https://chatgpt.com/g/g-697a5cf9d7648191b323d79d98bdeb84-eudr-dao-digital-twin-engineer-dte" target="_blank" rel="noopener noreferrer">EUDR DAO Digital Twin Engineer (DTE) — GPT</a>
 
 Canonical list (text file): docs/dte_links.txt
+
+Canonical inspection surface registry:
+- docs/DT_LINK_REGISTRY.md
 
 ## 1. ROLE
 
