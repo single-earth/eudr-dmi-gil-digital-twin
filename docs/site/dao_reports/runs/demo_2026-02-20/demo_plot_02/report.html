@@ -22,8 +22,8 @@
     <b>Report ID:</b> demo_2026-02-20::demo_plot_02<br />
     <b>Run ID:</b> demo_2026-02-20<br />
     <b>Plot ID:</b> demo_plot_02<br />
-    <b>Generated (UTC):</b> 2026-02-20T08:56:33+00:00<br />
-    <b>Data sources:</b> AOI GeoJSON: /Users/server/projects/eudr-dmi-gil/aoi_json_examples/coffee_se_asia_vietnam.geojson
+    <b>Generated (UTC):</b> 2026-02-20T09:37:53+00:00<br />
+    <b>Data sources:</b> AOI GeoJSON: aoi_json_examples/coffee_se_asia_vietnam.geojson
   </p>
 
   <section>
@@ -45,8 +45,8 @@
   <section>
     <h2>2) Commodity data</h2>
     <table>
-      <tr><th>Commodity type</th><td>coffee</td></tr>
-      <tr><th>Country region label</th><td>SE Asia</td></tr>
+      <tr><th>Commodity type</th><td>N/A</td></tr>
+      <tr><th>Country region label</th><td>N/A</td></tr>
       <tr><th>HS code</th><td>N/A</td></tr>
       <tr><th>Volume</th><td>N/A</td></tr>
       <tr><th>Country of production</th><td>Vietnam</td></tr>
@@ -80,20 +80,25 @@
     <h2>4) Deforestation assessment</h2>
     <table>
       <tr><th>Cutoff date</th><td>2020-12-31</td></tr>
-      <tr><th>Deforestation detected?</th><td>N/A</td></tr>
+      <tr><th>Deforestation detected?</th><td>No</td></tr>
       <tr>
         <th>Evidence maps</th>
         <td>
-          N/A
+          <ul>
+            <li>
+              <div style="margin-bottom:8px;"><a href="deforestation_map.svg">deforestation_map.svg</a></div>
+              <img src="deforestation_map.svg" alt="Deforestation evidence map" style="max-width:100%; height:auto; border:1px solid #ddd;" />
+            </li>
+          </ul>
         </td>
       </tr>
       <tr>
         <th>Summary metrics</th>
         <td>
           <table>
-            <tr><th>area_forest_ha</th><td>N/A</td></tr>
-            <tr><th>area_loss_post_2020_ha</th><td>N/A</td></tr>
-            <tr><th>area_aoi_ha</th><td>N/A</td></tr>
+            <tr><th>area_forest_ha</th><td>0.0</td></tr>
+            <tr><th>area_loss_post_2020_ha</th><td>0.0</td></tr>
+            <tr><th>area_aoi_ha</th><td>38939.80994465256</td></tr>
           </table>
         </td>
       </tr>
@@ -116,6 +121,7 @@
       <li>report.json</li>
       <li>report.html</li>
       <li>report.pdf</li>
+      <li>deforestation_map.svg</li>
     </ul>
     <p><b>Manifest pointer:</b> manifest.sha256</p>
   </footer>
