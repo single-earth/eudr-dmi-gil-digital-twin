@@ -26,6 +26,19 @@ It is not authoritative for code or compliance logic.
 
 A portable offline bundle can be inspected by downloading the site bundle and opening `index.html` locally in a browser.
 
+## Deployment (Git static + S3 artifacts)
+
+This repository can be deployed in a hybrid model:
+
+- Static portal pages remain in Git-hosted publishing (`docs/site/**`).
+- AOI run artifacts are mirrored to S3 from `docs/site/aoi_reports/runs/**`.
+
+Setup and CI details:
+
+- [docs/ops/option-a-git-static-plus-s3.md](docs/ops/option-a-git-static-plus-s3.md)
+- [scripts/sync_aoi_artifacts_to_s3.sh](scripts/sync_aoi_artifacts_to_s3.sh)
+- [.github/workflows/validate-and-sync-artifacts.yml](.github/workflows/validate-and-sync-artifacts.yml)
+
 ## AOI Reports publishing policy
 
 Only a single AOI-agnostic example run is published in this DT portal. Older AOI reports are retained on the server in the authoritative environment and are not published here.
@@ -154,4 +167,3 @@ Every claim must be grounded in portal URLs or indexed repo paths.
 
 This work has been developed on the author’s personal time and is intended for use by the Single.Earth Foundation.
 No formal affiliation or endorsement is implied unless explicitly stated.
-
