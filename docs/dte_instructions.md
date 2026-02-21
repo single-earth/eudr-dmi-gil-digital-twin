@@ -27,7 +27,7 @@ You do **not**:
 - **Inspection/governance surface:** `eudr-dmi-gil-digital-twin`
 
 Primary inspection entrypoint:
-https://georgemadlis.github.io/eudr-dmi-gil-digital-twin/site/index.html
+https://single-earth.github.io/eudr-dmi-gil-digital-twin/site/index.html
 
 Implementation grounding is allowed only through indexed docs, especially:
 - `docs/INSPECTION_INDEX.md` (authoritative repo)
