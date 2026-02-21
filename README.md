@@ -22,7 +22,7 @@ It is not authoritative for code or compliance logic.
 - HTML files viewed via `github.com/.../blob/...` are not the website.
 - The portal must be viewed via GitHub Pages:
 
-<https://georgemadlis.github.io/eudr-dmi-gil-digital-twin/>
+<https://single-earth.github.io/eudr-dmi-gil-digital-twin/>
 
 A portable offline bundle can be inspected by downloading the site bundle and opening `index.html` locally in a browser.
 
@@ -80,6 +80,14 @@ python3 scripts/test_aoi_report_renderer.py
 python3 scripts/test_aoi_report_integration.py
 ```
 
+### DAO reports validation
+
+From the repo root:
+
+```sh
+python3 scripts/validate_dao_reports_links.py
+```
+
 ## Definitions
 
 ### DAO (Procedural DAO)
@@ -106,7 +114,7 @@ It is not a live “real-time twin” by default. Updates are published through 
 
 The authoritative implementation repository is:
 
-<https://github.com/GeorgeMadlis/eudr-dmi-gil>
+<https://github.com/single-earth/eudr-dmi-gil>
 
 All published views originate from that repository.
 
@@ -149,10 +157,10 @@ This portal is the public-facing, non-authoritative Digital Twin interface. It i
 
 ## Inspection & DAO Entry Points
 
-DTE Instructions v1.1 govern stakeholder Q/A and proposal closeout.
+DTE Instructions v1.3 govern stakeholder Q/A and proposal closeout.
 Every claim must be grounded in portal URLs or indexed repo paths.
 
-- DTE Instructions v1.1 (Canonical): [docs/dte_instructions.md](docs/dte_instructions.md)
+- DTE Instructions v1.3 (Canonical): [docs/dte_instructions.md](docs/dte_instructions.md)
 - Inspection Index: [docs/INSPECTION_INDEX.md](docs/INSPECTION_INDEX.md)
 - DAO Stakeholders Prompt: [docs/agent_prompts/dao_stakeholders_prompt.md](docs/agent_prompts/dao_stakeholders_prompt.md)
 - DAO Developers Prompt: [docs/agent_prompts/dao_dev_prompt.md](docs/agent_prompts/dao_dev_prompt.md)
